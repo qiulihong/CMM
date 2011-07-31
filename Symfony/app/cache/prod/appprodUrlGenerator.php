@@ -13,7 +13,7 @@ use Symfony\Component\Routing\Exception\RouteNotFoundException;
 class appprodUrlGenerator extends Symfony\Component\Routing\Generator\UrlGenerator
 {
     static private $declaredRouteNames = array(
-
+       'ChoumeiHelloBundle_homepage' => true,
     );
 
     /**
@@ -37,4 +37,8 @@ class appprodUrlGenerator extends Symfony\Component\Routing\Generator\UrlGenerat
         return $this->doGenerate($variables, $defaults, $requirements, $tokens, $parameters, $name, $absolute);
     }
 
+    private function getChoumeiHelloBundle_homepageRouteInfo()
+    {
+        return array(array (  0 => 'name',), array (  '_controller' => 'Choumei\\HelloBundle\\Controller\\DefaultController::indexAction',), array (), array (  0 =>   array (    0 => 'variable',    1 => '/',    2 => '[^/]+?',    3 => 'name',  ),  1 =>   array (    0 => 'text',    1 => '/hello',  ),));
+    }
 }
