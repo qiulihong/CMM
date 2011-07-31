@@ -1,0 +1,7 @@
+parameters:
+#    choumei_security.example.class: Choumei\SecurityBundle\Example
+
+services:
+#    choumei_security.example:
+#        class: %choumei_security.example.class%
+#        arguments: [@service_id, "plain_value", %parameter%]

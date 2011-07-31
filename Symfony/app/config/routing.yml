@@ -1,3 +1,7 @@
+ChoumeiSecurityBundle:
+    resource: "@ChoumeiSecurityBundle/Resources/config/routing.yml"
+    prefix:   /
+
 ChoumeiHelloBundle:
     resource: "@ChoumeiHelloBundle/Resources/config/routing.yml"
     prefix:   /

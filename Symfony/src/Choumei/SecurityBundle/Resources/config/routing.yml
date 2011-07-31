@@ -1,0 +1,10 @@
+ChoumeiSecurityBundle_homepage:
+    pattern:  /
+    defaults: { _controller: ChoumeiSecurityBundle:Security:login}
+    
+ChoumeiSecurityBundle_login:
+    pattern: /login
+    defaults: { _controller: ChoumeiSecurityBundle:Security:login}
+
+ChoumeiSecurityBundle_login_check:
+  pattern: /login_check

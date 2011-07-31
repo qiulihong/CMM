@@ -143,6 +143,24 @@ class appdevUrlMatcher extends Symfony\Bundle\FrameworkBundle\Routing\Redirectab
 
         }
 
+        // ChoumeiSecurityBundle_homepage
+        if (rtrim($pathinfo, '/') === '') {
+            if (substr($pathinfo, -1) !== '/') {
+                return $this->redirect($pathinfo.'/', 'ChoumeiSecurityBundle_homepage');
+            }
+            return array (  '_controller' => 'Choumei\\SecurityBundle\\Controller\\SecurityController::loginAction',  '_route' => 'ChoumeiSecurityBundle_homepage',);
+        }
+
+        // ChoumeiSecurityBundle_login
+        if ($pathinfo === '/login') {
+            return array (  '_controller' => 'Choumei\\SecurityBundle\\Controller\\SecurityController::loginAction',  '_route' => 'ChoumeiSecurityBundle_login',);
+        }
+
+        // ChoumeiSecurityBundle_login_check
+        if ($pathinfo === '/login_check') {
+            return array('_route' => 'ChoumeiSecurityBundle_login_check');
+        }
+
         // ChoumeiHelloBundle_homepage
         if (0 === strpos($pathinfo, '/hello') && preg_match('#^/hello/(?P<name>[^/]+?)$#x', $pathinfo, $matches)) {
             return array_merge($this->mergeDefaults($matches, array (  '_controller' => 'Choumei\\HelloBundle\\Controller\\DefaultController::indexAction',)), array('_route' => 'ChoumeiHelloBundle_homepage'));

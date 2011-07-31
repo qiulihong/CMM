@@ -33,6 +33,9 @@ class appdevUrlGenerator extends Symfony\Component\Routing\Generator\UrlGenerato
        '_configurator_home' => true,
        '_configurator_step' => true,
        '_configurator_final' => true,
+       'ChoumeiSecurityBundle_homepage' => true,
+       'ChoumeiSecurityBundle_login' => true,
+       'ChoumeiSecurityBundle_login_check' => true,
        'ChoumeiHelloBundle_homepage' => true,
     );
 
@@ -155,6 +158,21 @@ class appdevUrlGenerator extends Symfony\Component\Routing\Generator\UrlGenerato
     private function get_configurator_finalRouteInfo()
     {
         return array(array (), array (  '_controller' => 'Sensio\\Bundle\\DistributionBundle\\Controller\\ConfiguratorController::finalAction',), array (), array (  0 =>   array (    0 => 'text',    1 => '/_configurator/final',  ),));
+    }
+
+    private function getChoumeiSecurityBundle_homepageRouteInfo()
+    {
+        return array(array (), array (  '_controller' => 'Choumei\\SecurityBundle\\Controller\\SecurityController::loginAction',), array (), array (  0 =>   array (    0 => 'text',    1 => '/',  ),));
+    }
+
+    private function getChoumeiSecurityBundle_loginRouteInfo()
+    {
+        return array(array (), array (  '_controller' => 'Choumei\\SecurityBundle\\Controller\\SecurityController::loginAction',), array (), array (  0 =>   array (    0 => 'text',    1 => '/login',  ),));
+    }
+
+    private function getChoumeiSecurityBundle_login_checkRouteInfo()
+    {
+        return array(array (), array (), array (), array (  0 =>   array (    0 => 'text',    1 => '/login_check',  ),));
     }
 
     private function getChoumeiHelloBundle_homepageRouteInfo()
