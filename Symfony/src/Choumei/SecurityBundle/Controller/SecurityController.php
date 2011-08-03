@@ -21,7 +21,7 @@ class SecurityController extends Controller
       $error  = $session->get( SecurityContext::AUTHENTICATION_ERROR);
     }
     
-    return $this->render( 'ChoumeiSecurityBundle:Security:login.html.php', array(
+    return $this->render( 'ChoumeiSecurityBundle:Security:login.html.twig', array(
       'last_username'	=> $session->get( SecurityContext::LAST_USERNAME),
       'error'	=> $error,
     ));

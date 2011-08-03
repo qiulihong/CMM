@@ -1,0 +1,7 @@
+parameters:
+#    choumei_welcome.example.class: Choumei\WelcomeBundle\Example
+
+services:
+#    choumei_welcome.example:
+#        class: %choumei_welcome.example.class%
+#        arguments: [@service_id, "plain_value", %parameter%]

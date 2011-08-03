@@ -1,3 +1,7 @@
+ChoumeiWelcomeBundle:
+    resource: "@ChoumeiWelcomeBundle/Resources/config/routing.yml"
+    prefix:   /
+
 ChoumeiSecurityBundle:
     resource: "@ChoumeiSecurityBundle/Resources/config/routing.yml"
     prefix:   /
@@ -5,6 +9,10 @@ ChoumeiSecurityBundle:
 ChoumeiHelloBundle:
     resource: "@ChoumeiHelloBundle/Resources/config/routing.yml"
     prefix:   /
+
+_welcome:
+    pattern:  /
+    defaults: { _controller: ChoumeiWelcomeBundle:Default:index }
 
 # Internal routing configuration to handle ESI
 #_internal:

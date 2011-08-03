@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+	<head>
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+        <title>{% block title %}真人，真时尚 | Choumei.me {% endblock %}</title>
+        {% block extrajs %}{% endblock %}
+        <!-- load default javascripts -->
+        {% block js %}
+	        {% javascripts '@ChoumeiWelcomeBundle/Resources/public/js/jquery-1.6.2.min.js' %}
+	        <script src="{{ asset_url }}"></script>
+	        {% endjavascripts %}
+        {% endblock %}
+        {% block stylesheets %}
+	        {% stylesheets '@ChoumeiWelcomeBundle/Resources/public/css/blueprint/screen.css' 
+	        			   '@ChoumeiWelcomeBundle/Resources/public/css/choumei.css'
+	        %}
+	        	<link rel="stylesheet" href="{{ asset_url }}" type="text/css" media="screen, projection" />
+	        {% endstylesheets%}
+	        {% stylesheets '@ChoumeiWelcomeBundle/Resources/public/css/blueprint/print.css' %}
+	        	<link rel="stylesheet" href="{{ asset_url }}" type="text/css" media="print" />
+	        {% endstylesheets %}
+	        {% stylesheets '@ChoumeiWelcomeBundle/Resources/public/css/blueprint/ie.css' %}
+	        	<!--[if lt IE 8 ]>
+	        	  <link rel="stylesheet" href="{{ asset_url }}" type="text/css" media="screen, projection" />
+	        	<![endif]-->
+	        {% endstylesheets %}
+        {% endblock %}
+        <link rel="shortcut icon" href="{{ asset('favicon.ico') }}" />
+	</head>
+	<body>
+		<div id="mainwrap">
+	    	{% block header %}
+	    		<div id="header">
+	    		</div>
+	    	{% endblock %}
+	        {% block body %}{% endblock %}
+	        {% block javascripts %}{% endblock %}
+	        <div id="footer" class="">
+	        	<ul class="nav">
+	        		<li class="first"><a href="/">首页</a></li>
+	        		<li><a href="/ruls-and-rights">准则与权力</a></li>
+	        		<li><a href="/feedback">意见建议</a></li>
+	        		<li><a href="/business">你是商家？</a></li>
+	        		<li><a href="/weibo">微博</a></li>
+	        		<li><a href="/contact-us">联系我们</a></li>
+	        		<li class="last"><a href="/terms-and-privacy">保密策略</a></li>
+	        	</ul>
+	        </div>
+		</div>
+	</body>
+</html>

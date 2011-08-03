@@ -19,6 +19,7 @@ class AppKernel extends Kernel
             new JMS\SecurityExtraBundle\JMSSecurityExtraBundle(),
             new Choumei\HelloBundle\ChoumeiHelloBundle(),
             new Choumei\SecurityBundle\ChoumeiSecurityBundle(),
+            new Choumei\WelcomeBundle\ChoumeiWelcomeBundle(),
         );
 
         if (in_array($this->getEnvironment(), array('dev', 'test'))) {

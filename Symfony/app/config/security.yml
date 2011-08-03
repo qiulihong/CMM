@@ -11,6 +11,7 @@ security:
             users:
                 user:  { password: userpass, roles: [ 'ROLE_USER' ] }
                 admin: { password: adminpass, roles: [ 'ROLE_ADMIN' ] }
+                leon : { password: leon, roles: [ 'ROLE_ADMIN' ] }
 
     firewalls:
         dev:
@@ -20,6 +21,10 @@ security:
         login:
             pattern:  ^/demo/secured/login$
             security: false
+            
+        login_firewall:
+            pattern: ^/login$
+            security: false      
 
         secured_area:
             pattern:    ^/
@@ -29,8 +34,8 @@ security:
                 username_parameter: _useremail
                 password_parameter: _password
             logout:
-                path:   /demo/secured/logout
-                target: /demo/
+                path:   /logout
+                target: /
             anonymous: ~
             #http_basic:
             #    realm: "Secured Demo Area"
