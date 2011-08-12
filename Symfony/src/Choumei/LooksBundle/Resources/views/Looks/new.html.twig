@@ -1,0 +1,22 @@
+{% extends '::layout.html.twig' %}
+
+{% block body %}
+<h1>Looks creation</h1>
+
+<form action="{{ path('looks_create') }}" method="post" {{ form_enctype(form) }}>
+    {{ form_widget(form) }}
+    <div id="test_prot"></div>
+    <p>
+        <button type="submit">Create</button> <a href="javascript:void(0)" onclick="$('#test_prot').append($('#choumei_looksbundle_lookstype_accessories').attr('data-prototype').replace(/\$\$name\$\$/g, 0))">Add</a>
+    </p>
+</form>
+
+<ul class="record_actions">
+    <li>
+        <a href="{{ path('looks') }}">
+            Back to the list
+        </a>
+    </li>
+</ul>
+
+{% endblock %}
