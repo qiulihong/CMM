@@ -3,16 +3,14 @@
 	<head>
         <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
         <title>{% block title %}真人，真时尚 | Choumei.me {% endblock %}</title>
-        {% block extrajs %}{% endblock %}
         <!-- load default javascripts -->
-        {% block js %}
+        {% block javascripts %}
 	        {% javascripts '@ChoumeiWelcomeBundle/Resources/public/js/jquery-1.6.2.min.js' %}
 	        <script src="{{ asset_url }}"></script>
 	        {% endjavascripts %}
         {% endblock %}
         {% block stylesheets %}
 	        {% stylesheets '@ChoumeiWelcomeBundle/Resources/public/css/blueprint/screen.css' 
-	        			   '@ChoumeiWelcomeBundle/Resources/public/css/choumei.css'
 	        %}
 	        	<link rel="stylesheet" href="{{ asset_url }}" type="text/css" media="screen, projection" />
 	        {% endstylesheets%}
@@ -24,17 +22,63 @@
 	        	  <link rel="stylesheet" href="{{ asset_url }}" type="text/css" media="screen, projection" />
 	        	<![endif]-->
 	        {% endstylesheets %}
+	        <link rel="stylesheet" href="{{ asset('/css/choumei.css') }}" type="text/css" media="all" />
         {% endblock %}
         <link rel="shortcut icon" href="{{ asset('favicon.ico') }}" />
 	</head>
 	<body>
 		<div id="mainwrap">
 	    	{% block header %}
-	    		<div id="header">
+	    		<div id="header" class="container">
+	    			<div id="userpannel" class="">
+	    				<ul>
+	    					{% if is_granted('IS_AUTHENTICATED_REMEMBERED') %}
+	    						edit profile
+	    						<li><a href="{{ url('fos_user_security_logout') }}">退出</a></li>
+	    					{% else %}
+		    					<li class="first"><a href="{{ url('fos_user_registration_register')}}">注册</a></li>
+		    					<li><a href="{{ url('fos_user_security_login') }}">登录</a></li>
+	    					{% endif %}
+	    					<li class="grey"><a href="/about-us">关于</a></li>
+	    					<li class="grey"><a href="/business">你是商家？</a></li>
+	    				</ul>
+	    			</div>
+	    			<div class="clear">&nbsp;</div>
+	    			<!-- top menu-->
+	    			<div id="topmenu">
+	    				<ul style="position:relative;">
+	    					<li id="menu_looks" onmouseover="$('#menu_looks_submenu').show()" onmouseout="$('#menu_looks_submenu').hide()"><a href="">搭配</a>
+			    				<ul id="menu_looks_submenu">
+			    					<li>最流行</li>
+			    					<li>最新上传</li>
+			    					<li>我关注得</li>
+			    				</ul>
+			    			</li>
+	    					<li id="popular_chics"><a href="">时尚达人</a></li>
+	    					<li id="brand_browse" onmouseover="javascript:$('#brands').show()" onmouseout="javascript:$('#brands').hide()"><a href="">品牌, 分类</a>
+	    						<div id="brands" >
+	    							<ul class="column span-6">
+	    								<li>Brand 1</li>
+	    								<li>Brand 1</li>
+	    								<li>Brand 1</li>
+	    								<li>Brand 1</li>
+	    							</ul>
+	    							<ul class="column span-6 last">
+	    								<li>Brand 2</li>
+	    								<li>Brand 2</li>
+	    								<li>Brand 2</li>
+	    								<li>Brand 2</li>
+	    							</ul>
+	    						</div>
+	    					</li>
+	    				</ul>
+	    			</div>
 	    		</div>
 	    	{% endblock %}
+	    	<div id="" class="container">
 	        {% block body %}{% endblock %}
-	        {% block javascripts %}{% endblock %}
+	        </div>
+	        {% block extrajs%}{% endblock %}
 	        <div id="footer" class="">
 	        	<ul class="nav">
 	        		<li class="first"><a href="/">首页</a></li>

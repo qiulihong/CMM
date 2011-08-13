@@ -14,9 +14,9 @@ class LooksType extends AbstractType
             ->add('url', 'file', array('required'=>false))
             //->add('user_id')
             //->add('accessories', 'collection', array('type' => new AccessoryType()))
-            ->add('accessories', 'collection', array('type'=>new AccessoryType(), 'allow_add'=>true,))
+            ->add('accessories', 'collection', array('type'=>new AccessoryType(), 'allow_add'=>true))
             //->add('styles')
-            ->add('user')
+            //->add('user')
         ;
     }
 

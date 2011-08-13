@@ -274,7 +274,7 @@ body{
 #header {
 	width: 100%;
 	height: 110px;
-	background: url(/bundles/choumeiwelcome/bkg-body-2.png) repeat-x 0 0 transparent;
+	background: url(../images/bkg-body-2.png) repeat-x 0 0 transparent;
 }
 #footer {
 	margin: 0 auto;
