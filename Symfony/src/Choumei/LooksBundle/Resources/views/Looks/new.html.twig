@@ -1,7 +1,27 @@
 {% extends '::layout.html.twig' %}
 
+{% block extrajs%}
+	{% javascripts '@ChoumeiLooksBundle/Resources/public/js/fileuploader.js' 
+				   '@ChoumeiLooksBundle/Resources/public/js/uploader.js'
+	%}
+	<script src="{{ asset_url }}"></script>
+	{% endjavascripts %}
+{% endblock%}
+{% block stylesheets %}
+	{{ parent() }}
+	{% stylesheets '@ChoumeiLooksBundle/Resources/public/css/fileuploader.css' %}
+		<link rel="stylesheet" href="{{ asset_url }}" type="text/css" media="screen, projection" />
+	{% endstylesheets%}
+{% endblock %}
 {% block body %}
 <h1>Looks creation</h1>
+<!-- upload image -->
+<div id="file-uploader">
+	<noscript>
+		Please enable javascript to let you upload your image.
+	</noscript>
+</div>
+<!-- end upload image -->
 
 <form action="{{ path('looks_create') }}" method="post" {{ form_enctype(form) }}>
     {{ form_widget(form) }}

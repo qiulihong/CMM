@@ -59,3 +59,6 @@
 [FOSUserBundle]
     git=git://github.com/FriendsOfSymfony/FOSUserBundle.git
     target=bundles/FOS/UserBundle
+[ValumUploader]
+	git=https://github.com/valums/file-uploader.git
+	

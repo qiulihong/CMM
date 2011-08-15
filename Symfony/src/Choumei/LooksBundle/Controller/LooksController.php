@@ -10,6 +10,7 @@ use Choumei\LooksBundle\Entity\Looks;
 use Choumei\LooksBundle\Entity\Accessory;
 use Choumei\LooksBundle\Form\LooksType;
 
+require_once(dirname(__FILE__).'/../Resources/php.php');
 /**
  * Looks controller.
  *
@@ -229,5 +230,26 @@ class LooksController extends Controller
             ->add('id', 'hidden')
             ->getForm()
         ;
+    }
+    
+    /**
+     *  upload looks photo backend file
+     *  invoked by fileuploader.js
+     *  
+     *  @Route("/upload", name="looks_upload")
+     *  @Method("post")
+     */
+    public function uploadAction()
+    {
+       // list of valid extensions, ex. array("jpeg", "xml", "bmp")
+      $allowedExtensions = array("jpeg","jpg","gif","png");
+      // max file size in bytes
+      $sizeLimit = 10 * 1024 * 1024;
+
+      $uploader = new \qqFileUploader($allowedExtensions, $sizeLimit);
+      $result = $uploader->handleUpload(dirname(__FILE__).'/../../../../web/uploads/');
+      // to pass data through iframe you will need to encode all html tags
+      echo htmlspecialchars(json_encode($result), ENT_NOQUOTES);      
+      exit;
     }
 }

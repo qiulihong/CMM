@@ -1,0 +1,26 @@
+{% extends "::layout.html.twig" %}
+
+{% block body %}
+	{% if error %}
+	    <div>{{ error }}</div>
+	{% endif %}
+	
+	<form action="{{ path("fos_user_security_check") }}" method="post">
+		<p>
+	    <label for="username">{{ '用户名'|trans({}, 'FOSUserBundle') }}
+	    <input type="text" id="username" name="_username" value="{{ last_username }}" />
+	    </label>
+	    <p>
+		
+		<p>	
+	    <label for="password">{{ '密码'|trans({}, 'FOSUserBundle') }}</label>
+	    <input type="password" id="password" name="_password" />
+	    </p>
+	
+		<p>
+	    <input type="checkbox" id="remember_me" name="_remember_me" value="on" />
+	    <label for="remember_me">{{ '记住我'|trans({}, 'FOSUserBundle') }}</label>
+	    </p>
+	    <input type="submit" id="_submit" name="_submit" value="{{ '登录'|trans({}, 'FOSUserBundle') }}" />
+	</form>
+{% endblock body %}

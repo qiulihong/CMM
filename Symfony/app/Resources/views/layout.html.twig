@@ -5,9 +5,13 @@
         <title>{% block title %}真人，真时尚 | Choumei.me {% endblock %}</title>
         <!-- load default javascripts -->
         {% block javascripts %}
-	        {% javascripts '@ChoumeiWelcomeBundle/Resources/public/js/jquery-1.6.2.min.js' %}
+	        {% javascripts '@ChoumeiWelcomeBundle/Resources/public/js/jquery-1.6.2.min.js'
+	        			   '@ChoumeiWelcomeBundle/Resources/public/js/jquery-ui-1.8.15.custom.js'
+	        			   '@ChoumeiWelcomeBundle/Resources/public/js/jquery.cropzoom.js'
+	         %}
 	        <script src="{{ asset_url }}"></script>
 	        {% endjavascripts %}
+	        <script src="{{ asset('js/jquery.cropzoom.js') }}"></script>
         {% endblock %}
         {% block stylesheets %}
 	        {% stylesheets '@ChoumeiWelcomeBundle/Resources/public/css/blueprint/screen.css' 
@@ -33,7 +37,8 @@
 	    			<div id="userpannel" class="">
 	    				<ul>
 	    					{% if is_granted('IS_AUTHENTICATED_REMEMBERED') %}
-	    						edit profile
+	    						<li class="first"><a href="{{ url('fos_user_profile_show') }}">{{ app.user }}</a></li>
+	    						<li ><a href="{{ url('fos_user_profile_edit') }}">帐号设置</a></li>
 	    						<li><a href="{{ url('fos_user_security_logout') }}">退出</a></li>
 	    					{% else %}
 		    					<li class="first"><a href="{{ url('fos_user_registration_register')}}">注册</a></li>
@@ -71,6 +76,9 @@
 	    							</ul>
 	    						</div>
 	    					</li>
+							<li style="" id="upload_button">
+								<a href="{{ url('looks_new') }}" style="">我要上传</a>
+							</li>
 	    				</ul>
 	    			</div>
 	    		</div>

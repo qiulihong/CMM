@@ -108,6 +108,21 @@ ul.nav a:hover{
 #topmenu li a:hover{
 	color: #FFFFFF;
 }
+#topmenu #upload_button{
+	float:right;
+	margin:-5px 20px 0 0;
+	padding-right:28px;
+	background:url(../images/bkg-btn-upload-right.png) right center no-repeat;
+}
+#topmenu #upload_button a{
+	background:url(../images/bkg-btn-upload.png) 0 0 no-repeat;
+	padding:0 20px;
+	height:30px;
+	line-height:30px;
+	color:#373737;
+	display:block;
+}
+
 li#menu_looks ul {
 	background: none;
 	display:none;
