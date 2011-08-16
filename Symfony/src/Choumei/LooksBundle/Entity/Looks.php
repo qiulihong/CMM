@@ -36,10 +36,6 @@ class Looks
      * @ORM\Column(name="url", type="string", length=255)
      * 
      */
-    /**
-     * 
-     * @Assert\Blank()
-     */
     private $url;
 
     /**
@@ -256,5 +252,14 @@ class Looks
     public function __toString()
     {
       return $this->title;
+    }
+    
+    /**
+     * @ORM\prePersist
+     */
+    public function populateUserId()
+    {
+      $user  = $this->get('security.context')->getToken()->getUser();
+      $this->user_id  = $user->getId();
     }
 }

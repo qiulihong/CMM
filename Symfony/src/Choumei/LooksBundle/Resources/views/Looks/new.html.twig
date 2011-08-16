@@ -3,6 +3,7 @@
 {% block extrajs%}
 	{% javascripts '@ChoumeiLooksBundle/Resources/public/js/fileuploader.js' 
 				   '@ChoumeiLooksBundle/Resources/public/js/uploader.js'
+				   '@ChoumeiLooksBundle/Resources/public/js/cropresize.js'
 	%}
 	<script src="{{ asset_url }}"></script>
 	{% endjavascripts %}
@@ -22,7 +23,9 @@
 	</noscript>
 </div>
 <!-- end upload image -->
-
+<div id="image_source">
+</div>
+<input type="button" onclick="doCropResize($('#image_source'))" value="确定" />
 <form action="{{ path('looks_create') }}" method="post" {{ form_enctype(form) }}>
     {{ form_widget(form) }}
     <div id="test_prot"></div>

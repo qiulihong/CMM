@@ -11,7 +11,7 @@ class LooksType extends AbstractType
     {
         $builder
             ->add('title')
-            ->add('url', 'file', array('required'=>false))
+            ->add('url', 'text', array('required'=>false))
             //->add('user_id')
             //->add('accessories', 'collection', array('type' => new AccessoryType()))
             ->add('accessories', 'collection', array('type'=>new AccessoryType(), 'allow_add'=>true))
