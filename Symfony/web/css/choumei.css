@@ -294,3 +294,47 @@ li#menu_looks ul {
 .mvn_se:hover {
     background-position: 100% -147px;
 }
+
+/* index page*/
+#no_logged_in_info {
+	border:1px solid #CEE7F2;
+	border-raaius:3px;
+	-webkit-border-radius: 3px;
+	-moz-border-radius: 3px;
+	background-color: #E7F3FA;
+	padding:20px;
+}
+/* scroll */
+.twtr-bd{
+	background-color: #F4F4F4;
+	border-radius:3px;
+	-webkiet-border-radius:3px;
+	-moz-border-radius: 3px;
+	padding:20px 20px 0 20px;
+}
+.spacer{
+	clear:both;
+	height:5px;
+}
+
+.twtr-timeline{
+	height:370px;
+}
+#tweet_container{
+	height:50px;
+	padding:5px;
+	word-wrap:break-word;
+	overflow:hidden;
+	background-color:#FFFFFF;
+	border-left: 1px solid #CCCCCC;
+	border-top: 1px solid #CCCCCC;
+	border-right: 1px solid #CCCCCC;
+}
+.twtr-fade{
+	z-index:1000;
+	background: url(../images/gradient.png) repeat-x;
+	height:50px;
+	position:relative;
+	bottom:48px;
+	clear:both;
+}

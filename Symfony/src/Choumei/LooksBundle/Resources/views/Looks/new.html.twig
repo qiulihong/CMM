@@ -25,15 +25,22 @@
 <!-- end upload image -->
 <div id="image_source">
 </div>
-<input type="button" onclick="doCropResize($('#image_source'))" value="确定" />
-<form action="{{ path('looks_create') }}" method="post" {{ form_enctype(form) }}>
-    {{ form_widget(form) }}
-    <div id="test_prot"></div>
-    <p>
-        <button type="submit">Create</button> <a href="javascript:void(0)" onclick="$('#test_prot').append($('#choumei_looksbundle_lookstype_accessories').attr('data-prototype').replace(/\$\$name\$\$/g, 0))">Add</a>
-    </p>
-</form>
-
+<input type="button" onclick="doCropResize($('#image_source'))" value="确定" id="do_crop_button" style="display:none;" />
+<!-- real create looks form -->
+<div id="create_looks_form" style="display:block;">
+	<form action="{{ path('looks_create') }}" method="post" {{ form_enctype(form) }}>
+	    {{ form_widget(form) }}
+	    <div id="test_prot">
+	    <input type="text" value="" maxlength="255" name="choumei_looksbundle_lookstype[accessories][0][url]" id="choumei_looksbundle_lookstype_accessories_0_url">
+	    <input type="text" value="" maxlength="255" name="choumei_looksbundle_lookstype[accessories][1][url]" id="choumei_looksbundle_lookstype_accessories_0_url">
+	    </div>
+	    <p>
+	    	<script>
+	    	</script>
+	        <button type="submit">Create</button> <a href="javascript:void(0)" onclick="javascript:addAccessoryElement();">Add</a>
+	    </p>
+	</form>
+</div>
 <ul class="record_actions">
     <li>
         <a href="{{ path('looks') }}">

@@ -8,6 +8,8 @@
 	        {% javascripts '@ChoumeiWelcomeBundle/Resources/public/js/jquery-1.6.2.min.js'
 	        			   '@ChoumeiWelcomeBundle/Resources/public/js/jquery-ui-1.8.15.custom.js'
 	        			   '@ChoumeiWelcomeBundle/Resources/public/js/jquery.cropzoom.js'
+	        			   '@ChoumeiWelcomeBundle/Resources/public/js/choumei.js'
+	        			   '@ChoumeiWelcomeBundle/Resources/public/js/tweetscoller.jquery.js'
 	         %}
 	        <script src="{{ asset_url }}"></script>
 	        {% endjavascripts %}
@@ -88,7 +90,7 @@
 	        {% block body %}{% endblock %}
 	        </div>
 	        {% block extrajs%}{% endblock %}
-	        <div id="footer" class="">
+	        <div id="footer" class="container">
 	        	<ul class="nav">
 	        		<li class="first"><a href="/">首页</a></li>
 	        		<li><a href="/ruls-and-rights">准则与权力</a></li>

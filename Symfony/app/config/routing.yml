@@ -30,10 +30,6 @@ ChoumeiHelloBundle:
     resource: "@ChoumeiHelloBundle/Resources/config/routing.yml"
     prefix:   /
 
-ChoumeiSecurityBundle:
-    pattern: /admin
-    defaults: { _controller: ChoumeiWelcomeBundle:Default:index }
-    
 _welcome:
     pattern:  /
     defaults: { _controller: ChoumeiWelcomeBundle:Default:index }

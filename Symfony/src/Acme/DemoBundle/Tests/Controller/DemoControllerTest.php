@@ -8,6 +8,7 @@ class DemoControllerTest extends WebTestCase
 {
     public function testIndex()
     {
+      date_default_timezone_set('Australia/ACT');
         $client = $this->createClient();
 
         $crawler = $client->request('GET', '/demo/hello/Fabien');

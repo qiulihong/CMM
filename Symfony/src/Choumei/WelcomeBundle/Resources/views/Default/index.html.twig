@@ -1,4 +1,27 @@
 {% extends '::layout.html.twig' %}
 {% block body %}
-index page 
+	<div class="column span-20" id="index_content" style="">
+		{% if not is_granted('IS_AUTHENTICATED_REMEMBERED') %}
+			<div id="no_logged_in_info" >
+				<div class="column span-13">
+				<h2 style="color:#CCC;">什么是“臭美的我”??</h2>
+				<span>分享穿衣风格，获取荣誉勋章！年轻人的时尚社区。</span>
+				<p style="padding:0;margin:0;">3秒钟轻松注册，分享你得臭美心得。</p>
+				</div>
+				<div style="clear:both;height:0;line-height:0;">&nbsp;</div>
+			</div>
+		{% endif %}
+		<div id="" class="column span-13">
+			some content
+		</div>
+	</div>
+	<div class="column span-9 last" id="side_bar" style="">
+		<div class="twtr-bd">
+			<div style=""  class="twtr-timeline">
+				<div class="twtr-tweets" >
+				</div>
+			</div>
+			<div class="twtr-fade"></div>
+		</div>
+	</div><!-- end side bar-->
 {% endblock %}

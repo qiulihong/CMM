@@ -1272,7 +1272,18 @@ $(function(){
 	    onComplete: function(id, fileName, responseJSON){
 	    	//alert(responseJSON.img_url + fileName);
 	    	//$('#file-uploader').append($('<div><img src="'+responseJSON.img_url+fileName+'" /></div>'));
-	    	var cropZone	= initCropResize(responseJSON.img_url+fileName);
+	    	var img	= new Image();
+	    	img.src= responseJSON.img_url + fileName;
+	    	//alert(img.src);
+	    	var imgHeight	= img.height;
+	    	var imgWidth	= img.width;
+	    	if(imgHeight < 484 || imgWidth < 290 ){
+	    		alert('为了保证图片质量，请上传尺寸大于 290*484 照片 ^_^')
+	    	}else{
+	    		var cropZone	= initCropResize(responseJSON.img_url+fileName, imgWidth, imgHeight);
+	    		$('#file-uploader').hide();
+	    		$('#do_crop_button').show();
+	    	}
 	    	//$('#file-uploader').append();
 	    },
 	    onCancel: function(id, fileName){},
@@ -1284,43 +1295,54 @@ $(function(){
 	  });
 	    
 });
-function initCropResize(image_source)
+function initCropResize(image_source, imgWidth, imgHeight)
 {
   var cropzoom = $('#image_source').cropzoom({
-    width:400,
-    height:300,
+    width:348,
+    height:581,
     bgColor: '#CCC',
+    overlayColor: '#CCC',
     enableRotation:true,
     enableZoom:true,
     zoomSteps:10,
     rotationSteps:10,
-    expose:{
-        slidersOrientation: 'horizontal',
-        zoomElement: '#zoom',
-        rotationElement: '#rot',
-        elementMovement:'#movement'
-    },
-    selector:{
+   selector:{
       centered:true,
+      w:290,
+      h:484,
       borderColor:'blue',
-      borderColorHover:'yellow'
+      borderColorHover:'yellow',
+      aspectRatio: true
     },
     image:{
         source: image_source,
-        width:1024,
-        height:768,
+        width: imgWidth,
+        height:imgHeight,
         minZoom:50,
         maxZoom:200,
-        startZoom:40,
+        startZoom:100,
         useStartZoomAsMinZoom:true,
-        snapToContainer:true
+        snapToContainer:true,
     }
   });
+  
 }
 
 function doCropResize(cropZone)
 {
 	//alert('do crop here.');
-	cropZone.send('/looks/crop', 'POST', {}, function(data){ alert(data);});
+	//TODO: remove app_dev.php on produc env
+	cropZone.send('/app_dev.php/looks/crop', 'POST', {}, function(data){ 
+		$('#choumei_looksbundle_lookstype_url').val(data);
+		$('#create_looks_form').prepend($('<img />').attr('src', data));
+		$('#create_looks_form').show();
+		$('#image_source').hide();
+		$('#do_crop_button').hide();
+	});
 	
+}
+function addAccessoryElement()
+{
+	var indexCount = $('#test_prot input').length;
+	$('#test_prot').append($('#choumei_looksbundle_lookstype_accessories').attr('data-prototype').replace(/\$\$name\$\$/g, indexCount+1));
 }

@@ -11,6 +11,7 @@ use Symfony\Component\Validator\Constraints as Assert;
  *
  * @ORM\Table()
  * @ORM\Entity
+ * @ORM\HasLifecycleCallbacks
  */
 class Looks
 {
@@ -68,11 +69,6 @@ class Looks
      */
     private $comments;
     
-    /**
-     * @ORM\ManyToOne(targetEntity="Choumei\SecurityBundle\Entity\User", inversedBy="looks")
-     * @ORM\JoinColumn(name="user_id", referencedColumnName="id")
-     */
-    private $user;
     
     /**
      * Get id
@@ -229,25 +225,6 @@ class Looks
         return $this->comments;
     }
 
-    /**
-     * Set user
-     *
-     * @param Choumei\SecurityBundle\Entity\User $user
-     */
-    public function setUser(\Choumei\SecurityBundle\Entity\User $user)
-    {
-        $this->user = $user;
-    }
-
-    /**
-     * Get user
-     *
-     * @return Choumei\SecurityBundle\Entity\User 
-     */
-    public function getUser()
-    {
-        return $this->user;
-    }
     
     public function __toString()
     {
@@ -255,11 +232,9 @@ class Looks
     }
     
     /**
-     * @ORM\prePersist
+     * @ORM\prePersist()
      */
-    public function populateUserId()
+    public function setUserIdValue()
     {
-      $user  = $this->get('security.context')->getToken()->getUser();
-      $this->user_id  = $user->getId();
     }
 }

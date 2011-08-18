@@ -11,6 +11,7 @@ use Symfony\Component\Validator\Constraints as Assert;
  *
  * @ORM\Table()
  * @ORM\Entity
+ * @ORM\HasLifecycleCallbacks
  */
 class Looks
 {
@@ -220,6 +221,14 @@ class Looks
     }
 
     /**
+     * @ORM\PrePersist()
+     */
+    public function setUserIdValue()
+    {
+      //$user  = $this->get('security.context')->getToken()->getUser();
+      $this->setUserId(1);//$user->getId();
+    }
+    /**
      * Get comments
      *
      * @return Doctrine\Common\Collections\Collection 
@@ -254,12 +263,4 @@ class Looks
       return $this->title;
     }
     
-    /**
-     * @ORM\prePersist
-     */
-    public function populateUserId()
-    {
-      $user  = $this->get('security.context')->getToken()->getUser();
-      $this->user_id  = $user->getId();
-    }
 }

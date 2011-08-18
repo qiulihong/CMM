@@ -31,9 +31,11 @@ $(function(){
 	    	var imgHeight	= img.height;
 	    	var imgWidth	= img.width;
 	    	if(imgHeight < 484 || imgWidth < 290 ){
-	    		alert('亲,为了保证图片质量，请上传尺寸大于 290*484 照片 ^_^')
+	    		alert('为了保证图片质量，请上传尺寸大于 290*484 照片 ^_^')
 	    	}else{
 	    		var cropZone	= initCropResize(responseJSON.img_url+fileName, imgWidth, imgHeight);
+	    		$('#file-uploader').hide();
+	    		$('#do_crop_button').show();
 	    	}
 	    	//$('#file-uploader').append();
 	    },

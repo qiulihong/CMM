@@ -22,7 +22,22 @@ $(function(){
 	    // you can return false to abort submit
 	    onSubmit: function(id, fileName){},
 	    onProgress: function(id, fileName, loaded, total){},
-	    onComplete: function(id, fileName, responseJSON){},
+	    onComplete: function(id, fileName, responseJSON){
+	    	//alert(responseJSON.img_url + fileName);
+	    	//$('#file-uploader').append($('<div><img src="'+responseJSON.img_url+fileName+'" /></div>'));
+	    	var img	= new Image();
+	    	img.src= responseJSON.img_url + fileName;
+	    	//alert(img.src);
+	    	var imgHeight	= img.height;
+	    	var imgWidth	= img.width;
+	    	if(imgHeight < 484 || imgWidth < 290 ){
+	    		alert('为了保证图片质量，请上传尺寸大于 290*484 照片 ^_^')
+	    	}else{
+	    		var cropZone	= initCropResize(responseJSON.img_url+fileName, imgWidth, imgHeight);
+	    		$('#file-uploader').hide();
+	    	}
+	    	//$('#file-uploader').append();
+	    },
 	    onCancel: function(id, fileName){},
 	    
 	    messages: {

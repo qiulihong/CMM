@@ -30,4 +30,14 @@ class SecurityController extends Controller
     {
         return $this->render('ChoumeiSecurityBundle:Default:index.html.twig', array('name' => $name));
     }
+    
+    public function topUsersAction()
+    {
+      $mockData  = array();
+      for($i=0; $i<30; $i++){
+        array_push($mockData, time().'adfasdfkajdflajflajdflsjfjsdlfjaljdflskjflsjdfkjslfjlsdjfjdjfksjfk<br />skdfjsldkfj');
+      }
+      
+      exit(implode("~", $mockData));
+    }
 }
