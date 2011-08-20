@@ -10,6 +10,10 @@ class DefaultController extends Controller
     
     public function indexAction()
     {
-        return $this->render('ChoumeiWelcomeBundle:Default:index.html.twig', array());
+      $em  = $this->getDoctrine()->getEntityManager();
+      $repository  = $em->getRepository('ChoumeiLooksBundle:Looks');
+      $latestLooks  = $repository->findAll();
+                                 
+      return $this->render('ChoumeiWelcomeBundle:Default:index.html.twig', array('latestLooks'=> $latestLooks));
     }
 }

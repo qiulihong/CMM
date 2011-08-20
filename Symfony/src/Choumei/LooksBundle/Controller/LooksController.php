@@ -27,8 +27,11 @@ class LooksController extends Controller
     public function indexAction()
     {
         $em = $this->getDoctrine()->getEntityManager();
+        $repository  = $em->getRepository('ChoumeiLooksBundle:Looks');
+        
+        //$looks  = $repository->getLatestLooks();
 
-        $entities = $em->getRepository('ChoumeiLooksBundle:Looks')->findAll();
+        $entities = $repository->findAll();
 
         return array('entities' => $entities);
     }

@@ -44,6 +44,7 @@ a, a:visited{
 
 #footer {
 	margin: 0 auto;
+	margin-top: 20px;
 	height: 50px;
 	width: 1155px;
 	background-color:#EA2A7A;
@@ -337,4 +338,26 @@ li#menu_looks ul {
 	position:relative;
 	bottom:48px;
 	clear:both;
+}
+#latest_looks{
+	border:1px solid #E4E4E4;
+	border-radius: 4px;
+	-webkit-border-raidus: 4px;
+	-moz-border-radius: 4px;
+	padding:20px;
+	margin-top:10px;
+}
+.looks_wrapper_head{
+	background:url(../images/bkg-post-head.png) 0 0 no-repeat transparent;
+	height:120px;
+	padding-left:13px;
+}
+.looks_wrapper_subhead{
+	background-color: #F4F4F4;
+	padding:15px;
+	border-top: 1px solid #E4E4E4;
+	border-right: 1px solid #E4E4E4;
+	min-heigh:70px;
+	border-top-right-radius: 3px;
+	
 }

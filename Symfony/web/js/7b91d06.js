@@ -12919,7 +12919,7 @@ THE SOFTWARE.
 $(function(){
   $(".twtr-tweets").hycustweetscroller({
 	  startstop:true,
-      limit:3,
+      limit:6,
       move:'down',
   });
 });
@@ -12965,7 +12965,7 @@ var intervalLimit=0;
 					success:function(msg){
 						tweets_array=msg.split("~");
 						limit=tweets_array.length;
-						tempLimit=3;
+						tempLimit=limit;
 						while(tempLimit>6)
 						{
 							tempLimit--;

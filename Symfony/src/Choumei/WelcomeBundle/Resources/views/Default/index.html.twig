@@ -11,8 +11,25 @@
 				<div style="clear:both;height:0;line-height:0;">&nbsp;</div>
 			</div>
 		{% endif %}
-		<div id="" class="column span-13">
-			some content
+		<div id="latest_looks" class="">
+			<ul class="looks">
+				{% for looks in latestLooks %}
+					<li>
+						<div class="container">
+							<div class="looks_img column" style="border:1px solid #f00;margin-right:0;">
+								<img src="{{ looks.url }}" border="0" />
+							</div>
+							<div class="looks_wrapper column last span-11-5" style="">
+								<div class="looks_wrapper_head" class="span-11-5" style="">
+									<div class="looks_wrapper_subhead"></div>
+								</div>
+								<div>Head Actions</div>
+								<div>Tags list here</div>
+							</div>
+						</div>
+					</li>
+				{% endfor %}
+			</ul>
 		</div>
 	</div>
 	<div class="column span-9 last" id="side_bar" style="">

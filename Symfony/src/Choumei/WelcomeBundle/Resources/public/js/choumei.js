@@ -2,7 +2,7 @@
 $(function(){
   $(".twtr-tweets").hycustweetscroller({
 	  startstop:true,
-      limit:3,
+      limit:6,
       move:'down',
   });
 });
