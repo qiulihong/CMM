@@ -3,6 +3,7 @@
 {% block extrajs%}
 	{% javascripts '@ChoumeiLooksBundle/Resources/public/js/fileuploader.js' 
 				   '@ChoumeiLooksBundle/Resources/public/js/uploader.js'
+				   '@ChoumeiLooksBundle/Resources/public/js/accessoryUploader.js'
 				   '@ChoumeiLooksBundle/Resources/public/js/cropresize.js'
 	%}
 	<script src="{{ asset_url }}"></script>
@@ -27,17 +28,18 @@
 </div>
 <input type="button" onclick="doCropResize($('#image_source'))" value="确定" id="do_crop_button" style="display:none;" />
 <!-- real create looks form -->
-<div id="create_looks_form" style="display:block;">
+<div id="create_looks_form" style="display:none;">
+	<div id="outfit_img_wrapper" style="width:290px;z-index:999;position:relative"></div>
 	<form action="{{ path('looks_create') }}" method="post" {{ form_enctype(form) }}>
 	    {{ form_widget(form) }}
-	    <div id="test_prot">
+	    <div id="accessories-uploader">
 	    <input type="text" value="" maxlength="255" name="choumei_looksbundle_lookstype[accessories][0][url]" id="choumei_looksbundle_lookstype_accessories_0_url">
 	    <input type="text" value="" maxlength="255" name="choumei_looksbundle_lookstype[accessories][1][url]" id="choumei_looksbundle_lookstype_accessories_0_url">
 	    </div>
 	    <p>
 	    	<script>
 	    	</script>
-	        <button type="submit">Create</button> <a href="javascript:void(0)" onclick="javascript:addAccessoryElement();">Add</a>
+	        <button type="submit">Create</button> <!--a href="javascript:void(0)" onclick="javascript:addAccessoryElement();">Add</a-->
 	    </p>
 	</form>
 </div>
@@ -48,5 +50,6 @@
         </a>
     </li>
 </ul>
-
+<!--div id="outfit_img" style="width:150px;height:300px;border:1px solid #f00;margin:0;padding:0;position:relative;">
+</div-->
 {% endblock %}

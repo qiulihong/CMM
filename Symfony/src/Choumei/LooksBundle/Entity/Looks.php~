@@ -69,6 +69,11 @@ class Looks
      */
     private $comments;
     
+    /**
+     * @ORM\ManyToOne(targetEntity="Choumei\SecurityBundle\Entity\User", inversedBy="looks")
+     */
+    private $user;
+    
     
     /**
      * Get id
@@ -236,5 +241,25 @@ class Looks
      */
     public function setUserIdValue()
     {
+    }
+
+    /**
+     * Set user
+     *
+     * @param Choumei\LooksBundle\Entity\user $user
+     */
+    public function setUser(\Choumei\LooksBundle\Entity\user $user)
+    {
+        $this->user = $user;
+    }
+
+    /**
+     * Get user
+     *
+     * @return Choumei\LooksBundle\Entity\user 
+     */
+    public function getUser()
+    {
+        return $this->user;
     }
 }

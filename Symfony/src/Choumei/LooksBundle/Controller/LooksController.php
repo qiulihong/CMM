@@ -119,10 +119,10 @@ class LooksController extends Controller
           $accessories  = $entity->getAccessories();
           foreach($accessories as $accessory){
             $accessory->setLooks( $entity );
-            echo 'looks_id:' . $accessory->getLooksId();
+            //echo 'looks_id:' . $accessory->getLooksId();
           }
           $user  = $this->get('security.context')->getToken()->getUser();
-          $entity->setUserId( $user->getId() );
+          $entity->setUser( $user );
             $em = $this->getDoctrine()->getEntityManager();
             $em->persist($entity);
             $em->flush();

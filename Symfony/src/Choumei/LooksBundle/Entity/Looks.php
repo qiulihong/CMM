@@ -10,7 +10,7 @@ use Symfony\Component\Validator\Constraints as Assert;
  * Choumei\LooksBundle\Entity\Looks
  *
  * @ORM\Table()
- * @ORM\Entity
+ * @ORM\Entity(repositoryClass="Choumei\LooksBundle\Entity\LooksRepository")
  * @ORM\HasLifecycleCallbacks
  */
 class Looks
@@ -68,6 +68,11 @@ class Looks
      * @ORM\OneToMany(targetEntity="Comment", mappedBy="looks")
      */
     private $comments;
+    
+    /**
+     * @ORM\ManyToOne(targetEntity="Choumei\SecurityBundle\Entity\User", inversedBy="looks")
+     */
+    private $user;
     
     
     /**
@@ -236,5 +241,26 @@ class Looks
      */
     public function setUserIdValue()
     {
+    }
+
+    /**
+     * Set user
+     *
+     * @param Choumei\LooksBundle\Entity\user $user
+     */
+    //public function setUser(\Choumei\LooksBundle\Entity\user $user)
+    public function setUser(\FOS\UserBundle\Entity\User $user)
+    {
+        $this->user = $user;
+    }
+
+    /**
+     * Get user
+     *
+     * @return Choumei\LooksBundle\Entity\user 
+     */
+    public function getUser()
+    {
+        return $this->user;
     }
 }

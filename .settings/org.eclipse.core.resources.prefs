@@ -1,6 +1,11 @@
-#Wed Aug 03 21:55:19 EST 2011
+#Mon Aug 22 17:49:15 EST 2011
 eclipse.preferences.version=1
 encoding//Symfony/app/Resources/views/base.html.twig=UTF-8
 encoding//Symfony/app/Resources/views/layout.html.twig=UTF-8
-encoding//Symfony/src/Choumei/SecurityBundle/Resources/views/Security/login.html.php=UTF-8
+encoding//Symfony/src/Choumei/LooksBundle/Resources/public/js/accessoryUploader.js=UTF-8
+encoding//Symfony/src/Choumei/LooksBundle/Resources/public/js/cropresize.js=UTF-8
+encoding//Symfony/src/Choumei/LooksBundle/Resources/public/js/fileuploader.js=UTF-8
+encoding//Symfony/src/Choumei/LooksBundle/Resources/public/js/uploader.js=UTF-8
+encoding//Symfony/src/Choumei/LooksBundle/Resources/views/Looks/new.html.twig=UTF-8
+encoding//Symfony/src/Choumei/SecurityBundle/Resources/views/Security/login.html.twig=UTF-8
 encoding//Symfony/src/Choumei/WelcomeBundle/Resources/views/Default/index.html.twig=UTF-8

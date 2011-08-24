@@ -5,16 +5,14 @@ use Doctrine\ORM\EntityRepository;
 
 class LooksRepository extends EntityRepository
 {
-  /*
-  public function getLatestLooks()
+  public function getAllLatestLooks()
   {
     $query  = $this->createQueryBuilder('l')
-                ->where('id > 0')
-                ->orderBy('id', 'DESC')
+                ->where('l.id > 0')
+                ->orderBy('l.id', 'DESC')
                 ->getQuery();
     
     $looks  = $query->getResult();            
     return $looks;
   }
-  */
 }
