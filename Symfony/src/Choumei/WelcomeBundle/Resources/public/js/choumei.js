@@ -16,9 +16,11 @@ $(function(){
 	  
 	  var tagId	= 'tag_' + tagIndex;
 	  var tagFormId	= 'tag_form_' + tagIndex;
+	  var tagDivId	= 'tag_div_' + tagIndex;
 	  
 	  var tagSpan	= $('<span class="tag_tag" id="' + tagId + '"></span><span id="' + tagFormId + '" class="tag_form"></span>');
 	  tagDiv.attr('class','container tag_div');
+	  tagDiv.attr('id', tagDivId);
 	  tagDiv.css({
 		'border': '1px solid #f00',
 		'position':'absolute',
@@ -45,7 +47,7 @@ $(function(){
 	  // add actions
 	  var formContent	= $('#choumei_looksbundle_lookstype_tags').attr('data-prototype').replace('<label class=" required">\$\$name\$\$</label>', '');
 	  $('span#' + tagFormId ).append(formContent.replace('/\$\$name\$\$/g', tagIndex+1));
-	  $('span#' + tagFormId ).append('<a href="javascript:void(0);" id="close_form_"'+tagFormId+' onClick="javascript:$(this).parent().hide();$(\'.tag_div\').css(\'width\',0)">Close</a>');
+	  $('span#' + tagFormId ).append('<a href="javascript:void(0);" id="close_form_"'+tagFormId+' onClick="javascript:$(this).parent().hide();$(\'.tag_div\').css(\'width\',0)">Close</a> <a href="javascript:void(0);" onClick="">增加</a> <a href="javascript:void(0);" rel="remove_tag">删除</a> ');
 	  // set up css
 	  $('span.tag_tag').css({
 		  'display':'block',
@@ -69,5 +71,16 @@ $(function(){
 	  });
 	  $('span.tag_form').attr('class','tag_form column last');
 	  tagDiv.bind('click', function(e){e.stopPropagation();});
+	 // bind actions button & prevent bubble event 
+	  $('#' + tagDivId + ' a[rel="remove_tag"]').bind('click', function(e){
+		 e.stopPropagation();
+		 e.preventDefault();
+		 removeTag(tagDivId);
+	  });
   });
 });
+  function removeTag(tagDivId){
+	  $('#' + tagDivId).remove();
+	  //alert(tagDivId);
+	  // TODO re-order tag index
+  }
