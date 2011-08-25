@@ -10,19 +10,24 @@ class TagType extends AbstractType
     public function buildForm(FormBuilder $builder, array $options)
     {
         $builder
-            ->add('type_id')
-            ->add('brand_id')
+            ->add('clothType')
+            ->add('brand')
             ->add('url_or_location')
             ->add('look_id')
             ->add('position')
             ->add('looks')
-            ->add('brand')
-            ->add('clothType')
         ;
     }
 
     public function getName()
     {
         return 'choumei_looksbundle_tagtype';
+    }
+    
+    public function getDefaultOptions(array $options)
+    {
+      return array(
+        'data_class'	=> 'Choumei\LooksBundle\Entity\Tag',
+      );
     }
 }

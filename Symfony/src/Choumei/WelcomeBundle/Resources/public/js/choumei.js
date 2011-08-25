@@ -7,6 +7,15 @@ $(function(){
   });
   
   $('#outfit_img_wrapper').bind('click', function(e){
+	  var flag = false;
+	  $('#outfit_img_wrapper .tag_form').each(function(index){
+		  alert($(this).css('display'));
+		  if( $(this).css('display') == 'block'){
+			 flag = true;
+			 return flag;
+		  }
+	  });
+	  if(!flag){
 	  var offset = $('#outfit_img').offset();
 	  var x	= e.pageX - offset.left;
 	  var y	= e.pageY - offset.top;
@@ -77,6 +86,7 @@ $(function(){
 		 e.preventDefault();
 		 removeTag(tagDivId);
 	  });
+  }// end if !flag
   });
 });
   function removeTag(tagDivId){

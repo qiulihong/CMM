@@ -27,14 +27,14 @@ class Tag
      * @ORM\Column(name="type_id", type="integer", length=4)
      */
     private $type_id;
-
+    
     /**
      * @var integer $brand_id
      *
      * @ORM\Column(name="brand_id", type="integer", length=4)
      */
     private $brand_id;
-
+    
     /**
      * @var text $url_or_location
      *
