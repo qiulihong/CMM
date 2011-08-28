@@ -10,12 +10,11 @@ class TagType extends AbstractType
     public function buildForm(FormBuilder $builder, array $options)
     {
         $builder
-            ->add('clothType')
+            ->add('cloth_type')
             ->add('brand')
-            ->add('url_or_location')
-            ->add('look_id')
+            ->add('url_or_location', 'text')
             ->add('position')
-            ->add('looks')
+            //->add('looks')
         ;
     }
 

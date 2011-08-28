@@ -22,32 +22,12 @@ class Tag
     private $id;
 
     /**
-     * @var integer $type_id
-     *
-     * @ORM\Column(name="type_id", type="integer", length=4)
-     */
-    private $type_id;
-
-    /**
-     * @var integer $brand_id
-     *
-     * @ORM\Column(name="brand_id", type="integer", length=4)
-     */
-    private $brand_id;
-
-    /**
      * @var text $url_or_location
      *
      * @ORM\Column(name="url_or_location", type="text")
      */
     private $url_or_location;
 
-    /**
-     * @var integer $look_id
-     *
-     * @ORM\Column(name="look_id", type="integer", length=8)
-     */
-    private $look_id;
 
     /**
      * @var string $position
@@ -71,7 +51,7 @@ class Tag
      * @ORM\ManyToOne(targetEntity="ClothType")
      * 
      */
-    private $clothType;
+    private $cloth_type;
     
     /**
      * Get id
@@ -144,26 +124,6 @@ class Tag
     }
 
     /**
-     * Set look_id
-     *
-     * @param integer $lookId
-     */
-    public function setLookId($lookId)
-    {
-        $this->look_id = $lookId;
-    }
-
-    /**
-     * Get look_id
-     *
-     * @return integer 
-     */
-    public function getLookId()
-    {
-        return $this->look_id;
-    }
-
-    /**
      * Set position
      *
      * @param string $position
@@ -223,23 +183,4 @@ class Tag
         return $this->brand;
     }
 
-    /**
-     * Set clothType
-     *
-     * @param Choumei\LooksBundle\Entity\ClothType $clothType
-     */
-    public function setClothType(\Choumei\LooksBundle\Entity\ClothType $clothType)
-    {
-        $this->clothType = $clothType;
-    }
-
-    /**
-     * Get clothType
-     *
-     * @return Choumei\LooksBundle\Entity\ClothType 
-     */
-    public function getClothType()
-    {
-        return $this->clothType;
-    }
 }

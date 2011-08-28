@@ -85,42 +85,25 @@ class LooksController extends Controller
      */
     public function createAction()
     {
-    /*
-    //
-    $looks	= new Looks();
-	$accessory = new Accessory();
-	
-	$accessory->setUrl('kkkk');
-	//$accessory->setLooks($entity);
-	
-	$looks->setTitle('kk title');
-	$looks->setUserId(1);
-	//$looks->setUser('Leon');
-	$looks->addAccessories($accessory);
-	$em	= $this->getDoctrine()->getEntityManager();
-	$em->persist($looks);
-	$em->persist($accessory);
-	$em->flush();
-    //
-          // treat the collections
-          $accessories  = $entity->getAccessories();
-          foreach($accessories as $accessory){
-            $accessory->setOwner( $entity );
-            echo 'looks_id:' . $accessory->getLooksId();
-          }
-          exit();
-        */
         $entity  = new Looks();
         $request = $this->getRequest();
         $form    = $this->createForm(new LooksType(), $entity);
         $form->bindRequest($request);
 
         if ($form->isValid()) {
+          // set relation for accessories and tags
+          // TODO: maybe one day Symfony2.0 will fix this problem, so Doctrine will look after this
+          //       work not need me to set it explicity
           $accessories  = $entity->getAccessories();
           foreach($accessories as $accessory){
             $accessory->setLooks( $entity );
             //echo 'looks_id:' . $accessory->getLooksId();
           }
+          $tags  = $entity->getTags();
+          foreach( $tags as $tag ) {
+            $tag->setLooks( $entity );
+          }
+          //end set relations
           $user  = $this->get('security.context')->getToken()->getUser();
           $entity->setUser( $user );
             $em = $this->getDoctrine()->getEntityManager();

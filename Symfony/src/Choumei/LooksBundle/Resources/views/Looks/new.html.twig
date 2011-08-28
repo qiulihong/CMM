@@ -17,6 +17,7 @@
 {% endblock %}
 {% block body %}
 <h1>Looks creation</h1>
+	<form action="{{ path('looks_create') }}" method="post" {{ form_enctype(form) }}>
 <!-- upload image -->
 <div id="file-uploader">
 	<noscript>
@@ -30,7 +31,7 @@
 <!-- real create looks form -->
 <div id="create_looks_form" style="display:none;">
 	<div id="outfit_img_wrapper" style="width:290px;z-index:999;position:relative"></div>
-	<form action="{{ path('looks_create') }}" method="post" {{ form_enctype(form) }}>
+	<!-- begin form originally -->
 	    {{ form_widget(form) }}
 	    <div id="accessories-uploader">
 	    <input type="text" value="" maxlength="255" name="choumei_looksbundle_lookstype[accessories][0][url]" id="choumei_looksbundle_lookstype_accessories_0_url">
@@ -41,8 +42,9 @@
 	    	</script>
 	        <button type="submit">Create</button> <!--a href="javascript:void(0)" onclick="javascript:addAccessoryElement();">Add</a-->
 	    </p>
-	</form>
+	    <!-- end form originally -->
 </div>
+	</form>
 <ul class="record_actions">
     <li>
         <a href="{{ path('looks') }}">

@@ -55,8 +55,11 @@ $(function(){
 	  $('span#' + tagId).html(tagIndex+1);
 	  // add actions
 	  var formContent	= $('#choumei_looksbundle_lookstype_tags').attr('data-prototype').replace('<label class=" required">\$\$name\$\$</label>', '');
+	  
+	  // TODO: WHY  $$name$$ is not be replaced??
 	  $('span#' + tagFormId ).append(formContent.replace('/\$\$name\$\$/g', tagIndex+1));
-	  $('span#' + tagFormId ).append('<a href="javascript:void(0);" id="close_form_"'+tagFormId+' onClick="javascript:$(this).parent().hide();$(\'.tag_div\').css(\'width\',0)">Close</a> <a href="javascript:void(0);" onClick="">增加</a> <a href="javascript:void(0);" rel="remove_tag">删除</a> ');
+	  // TODO: set position here
+	  $('span#' + tagFormId ).append('<a href="javascript:void(0);" id="close_form_"'+tagFormId+' rel="close_tag_window">关闭</a> <a href="javascript:void(0);" rel="add_tag">增加</a> <a href="javascript:void(0);" rel="remove_tag">删除</a> ');
 	  // set up css
 	  $('span.tag_tag').css({
 		  'display':'block',
@@ -85,6 +88,19 @@ $(function(){
 		 e.stopPropagation();
 		 e.preventDefault();
 		 removeTag(tagDivId);
+		 // TODO: ajax submit remove request
+	  });
+	  $('#' + tagDivId + ' a[rel="add_tag"]').bind('click', function(e){
+		 e.stopPropagation();
+		 e.preventDefault();
+		  // TODO: ajax submit add request
+		 alert('Do add tag action here.');
+	  });
+	  $('#' + tagDivId + ' a[rel="close_tag_window"]').bind('click', function(){
+		 e.stopPropagation();
+		 e.preventDefault();
+		 $(this).parent().hide();
+		 $('.tag_div').css('width', 0);
 	  });
   }// end if !flag
   });

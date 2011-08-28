@@ -54,7 +54,7 @@ class Looks
     private $accessories;
     
     /**
-     * @ORM\OneToMany(targetEntity="Tag", mappedBy="looks")
+     * @ORM\OneToMany(targetEntity="Tag", mappedBy="looks", cascade={"all"})
      */
     private $tags;
 
