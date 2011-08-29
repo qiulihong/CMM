@@ -22,15 +22,13 @@
 									<a href=""><span class="zoom">&nbsp;</span>点击看大图</a>
 								</div>
 								<div class="on_layer" style="color:#0f0;" onmouseout="$(this).hide();"">
-									<span class="on_marker_wrapper" style="position:absolute;top:30px;left:50px;display:block;" onmouseover="$(this).css('background-color', '#f00')" onmouseout="$(this).css('background-color', '#fff')">
-										<span class="on_marker">1</span>
-									</span>
-									<span class="on_marker_wrapper" style="position:absolute;top:130px;left:80px;display:block;">
-										<span class="on_marker">2</span>
-									</span>
-									<span class="on_marker_wrapper" style="position:absolute;top:230px;left:20px;display:block;">
-										<span class="on_marker">3</span>
-									</span>
+									{% set tagIndex = 0 %}
+									{% for tag in looks.tags%}
+									{% set tagIndex = tagIndex+1 %}
+										<span class="on_marker_wrapper" style="position:absolute;top:{{ tag.position|fetchY }}px;left:{{ tag.position|fetchX }}px;display:block;" onmouseover="$(this).css('background-color', '#f00')" onmouseout="$(this).css('background-color', '#fff')">
+											<span class="on_marker">{{ tagIndex }}</span>
+										</span>
+									{% endfor %}
 								</div>
 							</div>
 							<div class="looks_wrapper column last span-11-5" style="">

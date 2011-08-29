@@ -9,7 +9,8 @@ $(function(){
   $('#outfit_img_wrapper').bind('click', function(e){
 	  var flag = false;
 	  $('#outfit_img_wrapper .tag_form').each(function(index){
-		  alert($(this).css('display'));
+		  // TODO: here can be optimised later, if function() return true, can stop each
+		  //       now I have no idea about skipping each loop
 		  if( $(this).css('display') == 'block'){
 			 flag = true;
 			 return flag;
@@ -21,7 +22,7 @@ $(function(){
 	  var y	= e.pageY - offset.top;
 	  //alert(x + ':' + y);
 	  var tagDiv	= $('<div ></div>');
-	  var tagIndex	= $('#outfit_img_wrapper > div').length;
+	  var tagIndex	= $('#outfit_img_wrapper > div').length + 1;
 	  
 	  var tagId	= 'tag_' + tagIndex;
 	  var tagFormId	= 'tag_form_' + tagIndex;
@@ -52,14 +53,16 @@ $(function(){
 	  $('#outfit_img_wrapper').append(tagDiv);
 	  
 	  // set up index
-	  $('span#' + tagId).html(tagIndex+1);
+	  $('span#' + tagId).html(tagIndex);
 	  // add actions
 	  var formContent	= $('#choumei_looksbundle_lookstype_tags').attr('data-prototype').replace('<label class=" required">\$\$name\$\$</label>', '');
 	  
 	  // TODO: WHY  $$name$$ is not be replaced??
-	  $('span#' + tagFormId ).append(formContent.replace('/\$\$name\$\$/g', tagIndex+1));
+	  $('span#' + tagFormId ).append(formContent.replace(/\$\$name\$\$/g, tagIndex));
 	  // TODO: set position here
 	  $('span#' + tagFormId ).append('<a href="javascript:void(0);" id="close_form_"'+tagFormId+' rel="close_tag_window">关闭</a> <a href="javascript:void(0);" rel="add_tag">增加</a> <a href="javascript:void(0);" rel="remove_tag">删除</a> ');
+	  // populate position
+	  $('#choumei_looksbundle_lookstype_tags_'+ tagIndex +'_position').val('{"x":"' + x + '", "y":"' + y + '"}');
 	  // set up css
 	  $('span.tag_tag').css({
 		  'display':'block',
