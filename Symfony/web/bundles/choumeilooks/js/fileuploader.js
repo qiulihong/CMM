@@ -2,7 +2,7 @@
  * http://github.com/valums/file-uploader
  * 
  * Multiple file upload component with progress-bar, drag-and-drop. 
- * © 2010 Andrew Valums ( andrew(at)valums.com ) 
+ * ¬© 2010 Andrew Valums ( andrew(at)valums.com ) 
  * 
  * Licensed under GNU GPL 2 or later and GNU LGPL 2 or later, see license.txt.
  */    
@@ -255,7 +255,7 @@ qq.FileUploaderBasic = function(o){
         action: '/server/upload',
         params: {},
         button: null,
-        multiple: true,
+        multiple: false,
         maxConnections: 3,
         // validation        
         allowedExtensions: [],               
@@ -486,7 +486,7 @@ qq.FileUploader = function(o){
                 
         template: '<div class="qq-uploader">' + 
                 '<div class="qq-upload-drop-area"><span>Drop files here to upload</span></div>' +
-                '<div class="qq-upload-button">Upload a file</div>' +
+                '<div class="qq-upload-button">选择照片....</div>' +
                 '<ul class="qq-upload-list"></ul>' + 
              '</div>',
 
@@ -627,7 +627,9 @@ qq.extend(qq.FileUploader.prototype, {
 
         var fileElement = this._find(item, 'file');        
         qq.setText(fileElement, this._formatFileName(fileName));
-        this._find(item, 'size').style.display = 'none';        
+        //this._find(item, 'size').style.display = 'block';        
+        var size = this._find(item, 'size');
+        size.style.display = 'none';
 
         this._listElement.appendChild(item);
     },

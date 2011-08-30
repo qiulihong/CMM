@@ -113,3 +113,43 @@ $(function(){
 	  //alert(tagDivId);
 	  // TODO re-order tag index
   }
+
+function tmp(looks_id){
+	$('#on_layer_' + looks_id ).show();
+	// show on_layer
+	$('#on_layer_' + looks_id + ' .on_marker_wrapper').each(function(index){
+		$(this).hide();
+		$(this).css('color','#f00');
+	});
+}
+// bind relations between tag mark and tag detail
+$(function(){
+	$('.tag_detail').each(function(){
+		$(this).bind('mouseover', function(event){
+			var looks_id = $(this).attr('looks');
+			$('#on_layer_' + looks_id ).show();
+			// show on_layer
+			$('#on_layer_' + looks_id + ' .on_marker_wrapper').each(function(index){
+				$(this).hide();
+				$(this).css('color','#f00');
+			});
+			// emphrase current tag
+			$('.on_marker_wrapper[rel="' + $(this).attr('rel') + '"]').show();
+			$('.on_marker_wrapper[rel="' + $(this).attr('rel') + '"] .on_marker').css('background-position', '0 -20px');
+		});
+		$(this).bind('mouseout', function(event){
+			// show on_layer
+			//$('.on_layer').hide();
+			var looks_id = $(this).attr('looks');
+			$('#on_layer_' + looks_id ).hide();
+			// show on_layer
+			$('#on_layer_' + looks_id + ' .on_marker_wrapper').each(function(index){
+				$(this).show();
+				$(this).css('color','#f00');
+			});
+			// emphrase current tag
+			$('.on_marker_wrapper[rel="' + $(this).attr('rel') + '"]').css('background-color', '');
+			$('.on_marker_wrapper[rel="' + $(this).attr('rel') + '"] .on_marker').attr('style', '');
+		});
+	})
+});

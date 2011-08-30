@@ -369,6 +369,12 @@ ul.looks li{
 	height:484px;
 	position: relative;
 }
+.looks_img > a{
+	display:block;
+	height: 484px;
+	margin:0;
+	padding:0;
+}
 ul.looks h3{
 	padding:0;
 	margin:0;
@@ -406,6 +412,9 @@ ul.looks h3{
 	top: 10px;
 	width: 20px;	
 	font-size: 0.6em;
+}
+.looks_tags ul li:hover{
+	background-color: #F4F4F4;
 }
 .looks_tags ul li:hover .number{
 	background: url(../images/new-all-sprites.png) no-repeat scroll -81px 0 transparent;

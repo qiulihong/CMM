@@ -28,6 +28,7 @@ function initCropResize(image_source, imgWidth, imgHeight)
         snapToContainer:true,
     }
   });
+  
 }
 
 function doCropResize(cropZone)
@@ -36,9 +37,16 @@ function doCropResize(cropZone)
 	//TODO: remove app_dev.php on produc env
 	cropZone.send('/app_dev.php/looks/crop', 'POST', {}, function(data){ 
 		$('#choumei_looksbundle_lookstype_url').val(data);
-		$('#create_looks_form').prepend($('<img />').attr('src', data));
+		//$('#create_looks_form').prepend($('<img id="outfit_img"/>').attr('src', data));
+		$('#outfit_img_wrapper').append($('<img id="outfit_img" style="z-index:50;"/>').attr('src', data));
 		$('#create_looks_form').show();
 		$('#image_source').hide();
+		$('#do_crop_button').hide();
 	});
 	
+}
+function addAccessoryElement()
+{
+	var indexCount = $('#test_prot input').length;
+	$('#test_prot').append($('#choumei_looksbundle_lookstype_accessories').attr('data-prototype').replace(/\$\$name\$\$/g, indexCount+1));
 }

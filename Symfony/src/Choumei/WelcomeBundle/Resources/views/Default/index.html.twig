@@ -17,15 +17,15 @@
 					<li style="margin-bottom: 90px;">
 						<div class="container">
 							<div class="looks_img column" style="">
-								<a style="display:block; " href="" onMouseOver="$(this).siblings('.on_layer').show();"><img src="{{ looks.url }}" /></a>
+								<a href="" onMouseOver="$(this).siblings('.on_layer').show();"><img src="{{ looks.url }}" /></a>
 								<div class="outfit_image_click">
 									<a href=""><span class="zoom">&nbsp;</span>点击看大图</a>
 								</div>
-								<div class="on_layer" style="color:#0f0;" onmouseout="$(this).hide();"">
+								<div id="on_layer_{{ looks.id }}" class="on_layer" style="color:#0f0;" onmouseout="$(this).hide();"">
 									{% set tagIndex = 0 %}
 									{% for tag in looks.tags%}
 									{% set tagIndex = tagIndex+1 %}
-										<span class="on_marker_wrapper" style="position:absolute;top:{{ tag.position|fetchY }}px;left:{{ tag.position|fetchX }}px;display:block;" onmouseover="$(this).css('background-color', '#f00')" onmouseout="$(this).css('background-color', '#fff')">
+										<span class="on_marker_wrapper" id="tag_mark" rel="{{ tagIndex }}" style="position:absolute;top:{{ tag.position|fetchY }}px;left:{{ tag.position|fetchX }}px;display:block;" onmouseover="$(this).css('background-color', '#f00')" onmouseout="$(this).css('background-color', '#fff')">
 											<span class="on_marker">{{ tagIndex }}</span>
 										</span>
 									{% endfor %}
@@ -38,7 +38,7 @@
 										<div class="column span-8 last" id="">
 											<div class="column">Avatar</div>
 											<div class="column">
-												<h3>Post Title</h3>
+												<h3>{{ looks.title }}</h3>
 												<div>
 													<span>{{ looks.user }}</span>
 													<span>date</span>
@@ -51,19 +51,15 @@
 								<div class="looks_actions">Head Actions</div>
 								<div class="looks_tags">
 									<ul>
-										<li style="">
-											<span class="column number">1</span>
-											<span class="column">kkkk</span>
+										{% set tagIndex = 0 %}
+										{% for tag in looks.tags%}
+										{% set tagIndex = tagIndex+1 %}
+										<li class="tag_detail" rel="{{ tagIndex }}" looks="{{ looks.id }}">
+											<span class="column number">{{ tagIndex }}</span>
+											<span class="column">{{ tag.clothType }} - {{ tag.brand }}</span> 
 										</li>
-										<li>
-											<span class="column number">2</span>
-											<span class="column">ijjjjj</span>
-										</li>
-										<li>
-											<span class="column number">3</span>
-											<span class="column">kkk</span>
-										</li>
-									</ul>
+										{% endfor %}
+										</ul>
 								</div>
 							</div>
 						</div>

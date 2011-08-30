@@ -35,6 +35,7 @@ $(function(){
 	    	}else{
 	    		var cropZone	= initCropResize(responseJSON.img_url+fileName, imgWidth, imgHeight);
 	    		$('#file-uploader').hide();
+	    		$('#do_crop_button').show();
 	    	}
 	    	//$('#file-uploader').append();
 	    },
