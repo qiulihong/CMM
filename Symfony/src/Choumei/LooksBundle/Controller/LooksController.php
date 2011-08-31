@@ -29,6 +29,7 @@ class LooksController extends Controller
         $em = $this->getDoctrine()->getEntityManager();
         $repository  = $em->getRepository('ChoumeiLooksBundle:Looks');
         
+        
         //$looks  = $repository->getLatestLooks();
 
         $entities = $repository->findAll();
@@ -411,4 +412,33 @@ class LooksController extends Controller
 	}
 
     
+    /**
+     * Finds and displays most fashion chics
+     *
+     * @Route("/show/chics", name="looks_chics")
+     * @Template()
+     */
+	public function chicsAction(){
+	  
+	}
+	
+    /**
+     * browse by brands
+     *
+     * @Route("/brands", name="looks_brands")
+     * @Template()
+     */
+	public function brandsAction(){
+	  
+	}
+	
+    /**
+     * browse one brand
+     *
+     * @Route("/brand/{brandName}", name="looks_view_brand")
+     * @Template()
+     */
+	public function viewBrandAction($brandName){
+	  echo $brandName;exit;
+	}
 }

@@ -5,6 +5,7 @@ namespace Choumei\LooksBundle\Entity;
 use Doctrine\ORM\Mapping as ORM;
 use Doctrine\Common\Collections;
 use Symfony\Component\Validator\Constraints as Assert;
+use Gedmo\Mapping\Annotation as Gedmo;
 
 /**
  * Choumei\LooksBundle\Entity\Looks
@@ -73,6 +74,18 @@ class Looks
      * @ORM\ManyToOne(targetEntity="Choumei\SecurityBundle\Entity\User", inversedBy="looks")
      */
     private $user;
+    
+    /**
+     * @Gedmo\Timestampable(on="create")
+     * @ORM\Column(type="datetime")
+     */
+    private $created_at;
+    
+    /**
+     * @Gedmo\Timestampable(on="update")
+     * @ORM\Column(type="datetime")
+     */
+    private $updated_at;
     
     
     /**
@@ -262,5 +275,45 @@ class Looks
     public function getUser()
     {
         return $this->user;
+    }
+
+    /**
+     * Set created_at
+     *
+     * @param datetime $createdAt
+     */
+    public function setCreatedAt($createdAt)
+    {
+        $this->created_at = $createdAt;
+    }
+
+    /**
+     * Get created_at
+     *
+     * @return datetime 
+     */
+    public function getCreatedAt()
+    {
+        return $this->created_at;
+    }
+
+    /**
+     * Set updated_at
+     *
+     * @param datetime $updatedAt
+     */
+    public function setUpdatedAt($updatedAt)
+    {
+        $this->updated_at = $updatedAt;
+    }
+
+    /**
+     * Get updated_at
+     *
+     * @return datetime 
+     */
+    public function getUpdatedAt()
+    {
+        return $this->updated_at;
     }
 }

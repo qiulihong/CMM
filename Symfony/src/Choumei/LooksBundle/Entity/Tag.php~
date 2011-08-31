@@ -183,4 +183,25 @@ class Tag
         return $this->brand;
     }
 
+
+    /**
+     * Set cloth_type
+     *
+     * @param Choumei\LooksBundle\Entity\ClothType $clothType
+     */
+    public function setClothType(\Choumei\LooksBundle\Entity\ClothType $clothType)
+    {
+        $this->cloth_type = $clothType;
+    }
+
+    /**
+     * Get cloth_type
+     *
+     * @return Choumei\LooksBundle\Entity\ClothType 
+     */
+    public function getClothType()
+    {
+        return $this->cloth_type;
+    }
+    
 }

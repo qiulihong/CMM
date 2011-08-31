@@ -62,3 +62,9 @@
 [ValumUploader]
 	git=https://github.com/valums/file-uploader.git
 	
+[DoctrineExtension]
+	git=git://github.com/l3pp4rd/DoctrineExtensions.git
+	target=gedmo-doctrine-extensions
+[DoctrineExtensionsBundle]
+	git=git://github.com/stof/StofDoctrineExtensionsBundle.git
+	target=bundles/Stof/DoctrineExtensionsBundle

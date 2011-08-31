@@ -5,6 +5,7 @@ namespace Choumei\LooksBundle\Entity;
 use Doctrine\ORM\Mapping as ORM;
 use Doctrine\Common\Collections;
 use Symfony\Component\Validator\Constraints as Assert;
+use Gedmo\Mapping\Annotation as Gedmo;
 
 /**
  * Choumei\LooksBundle\Entity\Looks
@@ -54,7 +55,7 @@ class Looks
     private $accessories;
     
     /**
-     * @ORM\OneToMany(targetEntity="Tag", mappedBy="looks")
+     * @ORM\OneToMany(targetEntity="Tag", mappedBy="looks", cascade={"all"})
      */
     private $tags;
 
@@ -73,6 +74,18 @@ class Looks
      * @ORM\ManyToOne(targetEntity="Choumei\SecurityBundle\Entity\User", inversedBy="looks")
      */
     private $user;
+    
+    /**
+     * @Gedmo\Timestampable(on="create")
+     * @ORM\Column(type="datetime")
+     */
+    private $created_at;
+    
+    /**
+     * @Gedmo\Timestampable(on="update")
+     * @ORM\Column(type="datetime")
+     */
+    private $updated_at;
     
     
     /**

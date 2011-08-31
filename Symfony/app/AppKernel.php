@@ -22,6 +22,7 @@ class AppKernel extends Kernel
             new Choumei\WelcomeBundle\ChoumeiWelcomeBundle(),
             new Choumei\LooksBundle\ChoumeiLooksBundle(),
             new FOS\UserBundle\FOSUserBundle(),
+            new Stof\DoctrineExtensionsBundle\StofDoctrineExtensionsBundle(),
         );
 
         if (in_array($this->getEnvironment(), array('dev', 'test'))) {
