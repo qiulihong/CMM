@@ -1,6 +1,7 @@
 imports:
     - { resource: parameters.ini }
     - { resource: security.yml }
+    - { resource: "@ChoumeiLooksBundle/Resources/config/menu.xml" }
 
 framework:
     #esi:             ~
@@ -75,6 +76,9 @@ fos_user:
   db_driver: orm
   firewall_name: main
   user_class: Choumei\SecurityBundle\Entity\User
+  profile:
+    form:
+      type: choumei_user_profile
   
 stof_doctrine_extensions:
     default_locale: zh_CN

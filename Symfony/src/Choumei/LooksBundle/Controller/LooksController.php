@@ -34,7 +34,7 @@ class LooksController extends Controller
 
         $entities = $repository->findAll();
 
-        return array('entities' => $entities);
+        return array('entities' => $entities, 'current'=>'looks');
     }
 
     /**

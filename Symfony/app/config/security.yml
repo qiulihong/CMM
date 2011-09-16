@@ -48,6 +48,7 @@ security:
         - { path: ^/looks/edit$, role: ROLE_USER }
         - { path: ^/looks/upload$, role: ROLE_USER }
         - { path: ^/looks/crop$, role: ROLE_USER }
+        - { path: ^/user/edit$, role: ROLE_USER }
         #- { path: ^/login, roles: IS_AUTHENTICATED_ANONYMOUSLY, requires_channel: https }
         #- { path: ^/_internal, roles: IS_AUTHENTICATED_ANONYMOUSLY, ip: 127.0.0.1 }
     role_hierarchy:

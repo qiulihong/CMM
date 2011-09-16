@@ -1,0 +1,10 @@
+<ul id="root_menu">
+	<li>item 1</li>
+	<li>
+		<ul id="sub_menu_1">
+			<li> sub item 1 </li>
+			<li> sub item 2 </li>
+		</ul>
+	</li>
+
+</ul>

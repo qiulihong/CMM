@@ -1,5 +1,26 @@
+{% form_theme form theme %}
 {% extends "FOSUserBundle::layout.html.twig" %}
-
 {% block fos_user_content %}
-{% include "FOSUserBundle:Profile:edit_content.html.twig" %}
+
+
+	<div id="tabs">
+		<ul>
+			<li><a href="#tabs-1">基本信息</a></li>
+			<li><a href="{{ url('choumei_profile_avatar_edit') }}">修改头像</a></li>
+			<!--li><a href="#">我喜欢的</a></li>
+			<li><a href="#">我的小花</a></li>
+			<li><a href="/looks">时尚达人</a></li>
+			<li><a href="/">我的搭配</a></li-->
+		</ul>
+		<div id="tabs-1">
+			{{ form_errors(form) }}
+			<form action="{{ path('fos_user_profile_edit') }}" {{ form_enctype(form) }} method="POST" class="fos_user_profile_edit" novalidate="novalidate">
+				{{ form_widget(form.user)}}
+			    {{ form_rest(form) }}
+			    <div>
+			        <input type="submit" value="{{ 'profile.edit.submit'|trans({}, 'FOSUserBundle') }}" />
+			    </div>
+			</form>
+		</div>
+	</div>
 {% endblock fos_user_content %}

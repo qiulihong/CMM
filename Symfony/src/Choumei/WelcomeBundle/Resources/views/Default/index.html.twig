@@ -41,7 +41,7 @@
 												<h3>{{ looks.title }}</h3>
 												<div>
 													<span>{{ looks.user }}</span>
-													<span>date</span>
+													<span>{{ looks.getCreatedAt().date|date('d/m/Y') }}</span>
 												</div>
 											</div>
 										</div>

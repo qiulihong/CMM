@@ -153,3 +153,8 @@ $(function(){
 		});
 	})
 });
+
+// edit profile tabs;
+	$(function() {
+		$( "#tabs" ).tabs();
+	});

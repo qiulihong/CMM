@@ -76,6 +76,8 @@ class Looks
     private $user;
     
     /**
+     * @var datetime $created_at
+     * 
      * @Gedmo\Timestampable(on="create")
      * @ORM\Column(type="datetime")
      */

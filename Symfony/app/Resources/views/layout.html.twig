@@ -16,6 +16,7 @@
 	        {% endjavascripts %}
 	        <script src="{{ asset('js/jquery.cropzoom.js') }}"></script>
         {% endblock %}
+        {#{ knp_menu('main') }#}
         {% block stylesheets %}
 	        {% stylesheets '@ChoumeiWelcomeBundle/Resources/public/css/blueprint/screen.css' 
 	        			   '@ChoumeiWelcomeBundle/Resources/public/css/jquery-ui-1.8.15.custom.css'
@@ -43,6 +44,7 @@
 	    				<ul>
 	    					{% if is_granted('IS_AUTHENTICATED_REMEMBERED') %}
 	    						<li class="first"><a href="{{ url('fos_user_profile_show') }}">{{ app.user }}</a></li>
+	    						<!--li ><a href="{{ url('ChoumeiSecurityBundle_user_edit') }}">帐号设置</a></li-->
 	    						<li ><a href="{{ url('fos_user_profile_edit') }}">帐号设置</a></li>
 	    						<li><a href="{{ url('fos_user_security_logout') }}">退出</a></li>
 	    					{% else %}
@@ -54,7 +56,6 @@
 	    				</ul>
 	    			</div>
 	    			<div class="clear">&nbsp;</div>
-	    			<!-- top menu-->
 	    			<div id="topmenu">
 	    				<ul style="position:relative;">
 	    					<li id="menu_looks" onmouseover="$('#menu_looks_submenu').show()" onmouseout="$('#menu_looks_submenu').hide()"><a href="{{ url('looks') }}">搭配</a>

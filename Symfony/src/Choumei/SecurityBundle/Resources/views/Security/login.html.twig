@@ -7,20 +7,20 @@
 	
 	<form action="{{ path("fos_user_security_check") }}" method="post">
 		<p>
-	    <label for="username">{{ '用户名'|trans({}, 'FOSUserBundle') }}
+	    <label for="username">{{ 'security.login.username'|trans({}, 'FOSUserBundle') }}
 	    <input type="text" id="username" name="_username" value="{{ last_username }}" />
 	    </label>
 	    <p>
 		
 		<p>	
-	    <label for="password">{{ '密码'|trans({}, 'FOSUserBundle') }}</label>
+	    <label for="password">{{ 'security.login.password'|trans({}, 'FOSUserBundle') }}</label>
 	    <input type="password" id="password" name="_password" />
 	    </p>
 	
 		<p>
 	    <input type="checkbox" id="remember_me" name="_remember_me" value="on" />
-	    <label for="remember_me">{{ '记住我'|trans({}, 'FOSUserBundle') }}</label>
+	    <label for="remember_me">{{ 'security.login.remember_me'|trans({}, 'FOSUserBundle') }}</label>
 	    </p>
-	    <input type="submit" id="_submit" name="_submit" value="{{ '登录'|trans({}, 'FOSUserBundle') }}" />
+	    <input type="submit" id="_submit" name="_submit" value="{{ 'security.login.submit'|trans({}, 'FOSUserBundle') }}" />
 	</form>
 {% endblock body %}

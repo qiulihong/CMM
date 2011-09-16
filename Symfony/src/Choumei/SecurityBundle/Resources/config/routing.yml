@@ -1,4 +1,10 @@
+choumei_profile_avatar_edit:
+    pattern: /avatar/edit
+    defaults: { _controller: ChoumeiSecurityBundle:Security:editAvatar }
 ChoumeiSecurityBundle_top:
     pattern: /top-users
     defaults: { _controller: ChoumeiSecurityBundle:Security:topUsers }
+ChoumeiSecurityBundle_user_edit:
+    pattern: /user/edit
+    defaults: { _controller: ChoumeiSecurityBundle:Security:editProfile }
     

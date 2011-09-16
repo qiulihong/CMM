@@ -41,6 +41,12 @@ a, a:visited{
 #userpannel li.first{
 	border-left: 0px;
 }
+#topmenu li.current{
+	border: 1px solid #F068A2;
+	border-radius: 2px;
+	-webkit-border-radius: 2px;
+	-moz-border-radius: 2px;
+}
 
 #footer {
 	margin: 0 auto;
@@ -99,7 +105,7 @@ ul.nav a:hover{
 	line-height: 50px;
 }
 #topmenu li{
-	padding: 15px 0; 
+	padding: 10px 0; 
 	margin-left:20px;
 }
 #topmenu li a {
@@ -441,3 +447,5 @@ ul.looks h3{
 	width: 15px;
 }
 .on_layer{ display: none; position:absolute; top:0; left:0;width:290px; height:484px;cursor:pointer;}
+div#tabs ul li a{
+	font-size: 0.6em;

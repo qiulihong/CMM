@@ -5,3 +5,8 @@ services:
 #    choumei_security.example:
 #        class: %choumei_security.example.class%
 #        arguments: [@service_id, "plain_value", %parameter%]
+    choumei_security.user_profile.form.type:
+      class: Choumei\SecurityBundle\Form\Type\ProfileFormType
+      arguments: [%fos_user.model.user.class%]
+      tags:
+        - { name: form.type, alias: choumei_user_profile }

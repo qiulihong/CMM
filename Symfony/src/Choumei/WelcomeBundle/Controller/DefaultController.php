@@ -13,6 +13,7 @@ class DefaultController extends Controller
       $em  = $this->getDoctrine()->getEntityManager();
       $repository  = $em->getRepository('ChoumeiLooksBundle:Looks');
       $latestLooks  = $repository->getAllLatestLooks();
+      //var_dump($latestLooks[0]->getCreatedAt());exit;
                                  
       return $this->render('ChoumeiWelcomeBundle:Default:index.html.twig', array('latestLooks'=> $latestLooks));
     }

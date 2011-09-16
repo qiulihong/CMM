@@ -4,6 +4,7 @@ namespace Choumei\SecurityBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 use FOS\UserBundle\Entity\User as BaseUser;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * Choumei\SecurityBundle\Entity\User
@@ -27,12 +28,33 @@ class User extends BaseUser
      */
     private $looks;
 
-    /**
-     * @ORM\OneToOne(targetEntity="Profile")
-     */
-    private $profile;
-    
 
+    /**
+     * @ORM\Column(name="location", type="string")
+     */
+    protected $location;
+    
+    /**
+     * @ORM\Column(name="dob", type="date")
+     */
+    protected $dob;
+    
+    /**
+     * @ORM\Column(name="gender", type="string", columnDefinition="ENUM('male', 'female')")
+     */
+    protected $gender;
+    
+    /**
+     * @ORM\Column(name="nickname", type="string", length=128)
+     * @Assert\MaxLength(limit=128, message="昵称最长128字符", groups={"Profile","Registration"})
+     */
+    private $nickname;
+    
+    /**
+     * @ORM\Column(name="avatar", type="string")
+     */
+    private $avatar;
+    
     /**
      * Get id
      *

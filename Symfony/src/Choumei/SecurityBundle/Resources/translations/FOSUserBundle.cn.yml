@@ -7,7 +7,7 @@ group.flash.created: The group has been created
 group.flash.deleted: The group has been deleted
 
 # Security
-security.login.username: "Username:"
+security.login.username: "用户名:"
 security.login.password: "Password:"
 security.login.remember_me: Remember me
 security.login.submit: Login
