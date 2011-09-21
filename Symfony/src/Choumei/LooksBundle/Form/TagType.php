@@ -12,7 +12,7 @@ class TagType extends AbstractType
         $builder
             ->add('cloth_type')
             ->add('brand')
-            ->add('url_or_location', 'text')
+            ->add('url_or_location', 'text', array('required'=>false))
             ->add('position')
             //->add('looks')
         ;

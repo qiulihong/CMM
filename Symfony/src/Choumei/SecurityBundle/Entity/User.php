@@ -27,7 +27,11 @@ class User extends BaseUser
      * @ORM\OneToMany(targetEntity="Choumei\LooksBundle\Entity\Looks", mappedBy="user")
      */
     private $looks;
-
+    
+    /**
+     * @ORM\OneToMany(targetEntity="Choumei\LooksBundle\Entity\Vote", mappedBy="user")
+     */
+    private $vote;
 
     /**
      * @ORM\Column(name="location", type="string")
@@ -214,5 +218,25 @@ class User extends BaseUser
     public function getAvatar()
     {
         return $this->avatar;
+    }
+
+    /**
+     * Add vote
+     *
+     * @param Choumei\LooksBundle\Entity\Vote $vote
+     */
+    public function addVote(\Choumei\LooksBundle\Entity\Vote $vote)
+    {
+        $this->vote[] = $vote;
+    }
+
+    /**
+     * Get vote
+     *
+     * @return Doctrine\Common\Collections\Collection 
+     */
+    public function getVote()
+    {
+        return $this->vote;
     }
 }

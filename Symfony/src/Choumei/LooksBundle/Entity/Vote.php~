@@ -1,0 +1,68 @@
+<?php
+
+namespace Choumei\LooksBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+use Gedmo\Mapping\Annotation as Gedmo;
+
+/**
+ * Choumei\LooksBundle\Entity\Vote
+ *
+ * @ORM\Table()
+ * @ORM\Entity
+ */
+class Vote
+{
+    /**
+     * @var integer $id
+     *
+     * @ORM\Column(name="id", type="integer")
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="AUTO")
+     */
+    private $id;
+
+    /**
+     * @var integer $looks_id
+     * 
+     * @ORM\Column(name="looks_id", type="integer")
+     */
+    private $looks_id;
+    
+    /**
+     * @var remote_addr
+     * 
+     * @ORM\Column(name="remote_addr", type="string")
+     */
+    private $remote_addr;
+    
+    /**
+     * @var datetime $created_at
+     * 
+     * @Gedmo\Timestampable(on="create")
+     * @ORM\Column(type="datetime")
+     */
+    private $created_at;
+    
+    /**
+     * @Gedmo\Timestampable(on="update")
+     * @ORM\Column(type="datetime")
+     */
+    private $updated_at;
+    
+    /**
+     * @ORM\Column(type="integer")
+     */
+    private $user_id;
+
+    /**
+     * Get id
+     *
+     * @return integer 
+     */
+    public function getId()
+    {
+        return $this->id;
+    }
+    
+}

@@ -449,3 +449,8 @@ ul.looks h3{
 .on_layer{ display: none; position:absolute; top:0; left:0;width:290px; height:484px;cursor:pointer;}
 div#tabs ul li a{
 	font-size: 0.6em;
+}
+div.fos_user_user_show p {
+  margin:5px 0;
+  padding: 0;
+}

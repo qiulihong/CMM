@@ -13070,6 +13070,11 @@ $(function(){
 		});
 	})
 });
+
+// edit profile tabs;
+	$(function() {
+		$( "#tabs" ).tabs();
+	});
 var cur=0;
 var tweets_array=Array();
 var obj;

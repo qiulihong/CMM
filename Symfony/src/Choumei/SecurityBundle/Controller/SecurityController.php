@@ -41,14 +41,13 @@ class SecurityController extends Controller
       exit(implode("~", $mockData));
     }
     
-    public function editProfileAction()
-    {
-      //exit('kkk?!!!');
-      return $this->render('ChoumeiSecurityBundle:Security:edit-profile.html.twig', array());
-    }
-    
     public function editAvatarAction()
     {
-      return $this->render('ChoumeiSecurityBundle:Security:edit_avatar.html.twig', array());
+      $request  = $this->getRequest();
+      if( 'POST' === $request->getMethod() ){
+        exit('kkk');
+      }else{
+        return $this->render('ChoumeiSecurityBundle:Security:edit_avatar.html.twig', array());
+      }
     }
 }

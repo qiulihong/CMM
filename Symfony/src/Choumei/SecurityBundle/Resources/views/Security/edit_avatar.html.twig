@@ -1,1 +1,16 @@
-Do avatar edit here.
+<link rel="stylesheet" href="{{ asset('/bundles/choumeilooks/css/fileuploader.css') }}" type="text/css" media="screen, projection" />
+
+{% block extrajs%}
+	{% javascripts '@ChoumeiLooksBundle/Resources/public/js/fileuploader.js' 
+				   '@ChoumeiSecurityBundle/Resources/public/js/uploader.js'
+	%}
+	<script src="{{ asset_url }}"></script>
+	{% endjavascripts %}
+{% endblock%}
+<!-- upload avatar -->
+<div id="avatar-uploader">
+	<noscript>
+		请启用Javascript以便您上传更新头像。
+	</noscript>
+</div>
+<!-- end upload avatar -->

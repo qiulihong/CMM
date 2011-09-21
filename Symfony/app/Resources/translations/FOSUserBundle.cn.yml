@@ -8,15 +8,17 @@ group.flash.deleted: The group has been deleted
 
 # Security
 security.login.username: "用户名:"
-security.login.password: "Password:"
-security.login.remember_me: Remember me
-security.login.submit: Login
+security.login.password: "密码:"
+security.login.remember_me: 记住我
+security.login.submit: 登录
 
 # Profile
-profile.show.username: Username
-profile.show.email: Email
-profile.edit.submit: Update
-profile.flash.updated: The profile has been updated
+profile.show.username: 用户名 
+profile.show.email: Email 
+profile.show.dob : 生日
+profile.show.nickname : 昵称
+profile.edit.submit: 更新
+profile.flash.updated: 用户信息更新成功
 
 # Password change
 change_password.submit: Change password

@@ -24,7 +24,7 @@ class Tag
     /**
      * @var text $url_or_location
      *
-     * @ORM\Column(name="url_or_location", type="text")
+     * @ORM\Column(name="url_or_location", type="text", nullable=true)
      */
     private $url_or_location;
 
