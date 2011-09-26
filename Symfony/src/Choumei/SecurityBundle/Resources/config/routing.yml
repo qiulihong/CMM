@@ -1,3 +1,6 @@
+choumei_profile_avatar_crop:
+    pattern: /avatar/crop
+    defaults: { _controller: ChoumeiSecurityBundle:Security:cropAvatar }
 choumei_profile_avatar_edit:
     pattern: /avatar/edit
     defaults: { _controller: ChoumeiSecurityBundle:Security:editAvatar }

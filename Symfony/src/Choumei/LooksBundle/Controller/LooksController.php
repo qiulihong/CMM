@@ -256,7 +256,8 @@ class LooksController extends Controller
     {
       //list($width, $height) = getimagesize($_POST["imageSource"]);
       // TODO: swap web dir to product path
-      $imgRealPath  = '/Users/leonqiu/www/choumei.me/Symfony/web/' . $_POST['imageSource'];
+      //$imgRealPath  = '/Users/leonqiu/www/choumei.me/Symfony/web/' . $_POST['imageSource'];
+      $imgRealPath  = dirname(__FILE__) . '/../../../../web/' . $_POST['imageSource'];
       list($width, $height) = getimagesize($imgRealPath);
       
       $viewPortW = $_POST["viewPortW"];

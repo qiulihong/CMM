@@ -15,6 +15,7 @@ class DefaultController extends Controller
       $latestLooks  = $repository->getAllLatestLooks();
       //var_dump($latestLooks[0]->getCreatedAt());exit;
                                  
+      //$imageThumb = $this->get('choumei_looks.imagethumb');
       return $this->render('ChoumeiWelcomeBundle:Default:index.html.twig', array('latestLooks'=> $latestLooks));
     }
 }

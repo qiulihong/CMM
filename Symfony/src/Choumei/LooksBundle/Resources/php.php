@@ -1,5 +1,7 @@
 <?php
 
+require_once dirname(__FILE__) . '/../ImageThumb/PhpthumbFactory.php';
+
 /**
  * Handle file uploads via XMLHttpRequest
  */
@@ -35,6 +37,15 @@ class qqUploadedFileXhr {
             throw new Exception('Getting content length is not supported.');
         }      
     }   
+    
+    public function resize($file, $width, $height, $path){
+      $imageThumb  = \PhpThumbFactory::create($file);
+      $imageThumb->resize($width, $height);
+      if( !$imageThumb->save($path) ){
+        return false;
+      }
+      return true;
+    }
 }
 
 /**
@@ -56,6 +67,15 @@ class qqUploadedFileForm {
     }
     function getSize() {
         return $_FILES['qqfile']['size'];
+    }
+    
+    public function resize($file, $width, $height, $path){
+      $imageThumb  = PhpthumbFactory::create($file);
+      $imageThumb->resize($width, $height);
+      if( !$imageThumb->save($path) ){
+        return false;
+      }
+      return true;
     }
 }
 
@@ -105,7 +125,7 @@ class qqFileUploader {
     /**
      * Returns array('success'=>true) or array('error'=>'error message')
      */
-    function handleUpload($uploadDirectory, $replaceOldFile = FALSE){
+    function handleUpload($uploadDirectory, $replaceOldFile = FALSE, $avatarSize= array()){
         if (!is_writable($uploadDirectory)){
             return array('error' => $uploadDirectory);
         }
@@ -141,7 +161,13 @@ class qqFileUploader {
             }
         }
         if ($this->file->save($uploadDirectory . $filename . '.' . $ext)){
-            return array('success'=>true);
+          
+          // generate avatar
+          if( isset($avatarSize['width']) && isset($avatarSize['height']) && $avatarSize['width'] >0 && $avatarSize['height'] > 0){
+            $this->file->resize($uploadDirectory . $filename . '.' . $ext, $avatarSize['width'], $avatarSize['height'], $uploadDirectory . $filename . '_ava.' . $ext);
+          }
+          //
+            return array('success'=>true, 'avatar_file_name'=>$filename.'_ava.' . $ext);
         } else {
             return array('error'=> 'Could not save uploaded file.' .
                 'The upload was cancelled, or server error encountered');

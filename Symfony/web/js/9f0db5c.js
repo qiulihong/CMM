@@ -514,7 +514,8 @@ qq.FileUploader = function(o){
             // added to list item when upload completes
             // used in css to hide progress spinner
             success: 'qq-upload-success',
-            fail: 'qq-upload-fail'
+            //fail: 'qq-upload-fail'
+            fail: 'qq-upload-failed-text'
         }
     });
     // overwrite options with user supplied    

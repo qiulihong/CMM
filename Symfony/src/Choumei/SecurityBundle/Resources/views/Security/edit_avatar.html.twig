@@ -3,14 +3,20 @@
 {% block extrajs%}
 	{% javascripts '@ChoumeiLooksBundle/Resources/public/js/fileuploader.js' 
 				   '@ChoumeiSecurityBundle/Resources/public/js/uploader.js'
+				   '@ChoumeiSecurityBundle/Resources/public/js/cropresizeAvatar.js'
 	%}
 	<script src="{{ asset_url }}"></script>
 	{% endjavascripts %}
 {% endblock%}
 <!-- upload avatar -->
+<div id="avatar_div">
+	<img src="{{ user.avatar }}" id="avatar_img">
+</div>
+<div id="avatar_source"></div>
 <div id="avatar-uploader">
 	<noscript>
 		请启用Javascript以便您上传更新头像。
 	</noscript>
 </div>
+<input type="button" style="display:none;" id="crop_avatar_button" value="确定" onclick="doCropResizeAvatar($('#avatar_source'))">
 <!-- end upload avatar -->

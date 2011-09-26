@@ -17,4 +17,11 @@
         </service>
     </services>
     -->
+    <parameters>
+    	<parameter key="choumei_looks.imagethumb.class">Choumei\LooksBundle\ImageThumb\PhpThumbFactory</parameter>
+    </parameters>
+    <services>
+    	<service id="choumei_looks.imagethumb" class="%choumei_looks.imagethumb.class%">
+    	</service>
+    </services>
 </container>
