@@ -60,6 +60,25 @@ class User extends BaseUser
     private $avatar;
     
     /**
+     * @ORM\ManyToMany(targetEntity="Flower", inversedBy="users")
+     */
+    private $flowers;
+    
+    /**
+     * @ORM\ManyToMany(targetEntity="User")
+     * @ORM\JoinTable(name="following_follower", 
+     *		joinColumns={@ORM\JoinColumn(name="following_id", referencedColumnName="id")},
+     * 		inverseJoinColumns={@ORM\JoinColumn(name="follower_id", referencedColumnName="id")}
+     * )
+     */
+    private $followings;
+    
+    /**
+     * @ORM\ManyToMany(targetEntity="User", mappedBy="followings")
+     */
+    private $followers;
+    
+    /**
      * Get id
      *
      * @return integer 

@@ -219,4 +219,24 @@ class User extends BaseUser
     {
         return $this->avatar;
     }
+
+    /**
+     * Add vote
+     *
+     * @param Choumei\LooksBundle\Entity\Vote $vote
+     */
+    public function addVote(\Choumei\LooksBundle\Entity\Vote $vote)
+    {
+        $this->vote[] = $vote;
+    }
+
+    /**
+     * Get vote
+     *
+     * @return Doctrine\Common\Collections\Collection 
+     */
+    public function getVote()
+    {
+        return $this->vote;
+    }
 }

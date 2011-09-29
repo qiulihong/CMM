@@ -442,4 +442,15 @@ class LooksController extends Controller
 	public function viewBrandAction($brandName){
 	  echo $brandName;exit;
 	}
+	
+	/**
+	 * display latest flower awards
+	 * 
+	 * @Route("/flowers/new-awards", name="looks_flowers_new_awards")
+	 * @Template()
+	 */
+	public function newFlowersAwards()
+	{
+	  
+	}
 }
