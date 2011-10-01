@@ -40,7 +40,14 @@
 		<div id="mainwrap">
 	    	{% block header %}
 	    		<div id="header" class="container">
-	    			<div id="userpannel" class="">
+	    			<div id="header-logo" class="column span-14">
+	    				<div class="column span-6 logo"></div>
+	    				<div class="column span-6 last" style="border-left:1px solid #ccc;">
+	    					<h2>今天怎么打扮的？</h2>
+	    					<h3>真人，真时尚</h3>
+	    				</div>
+	    			</div>
+	    			<div id="userpannel" class="column">
 	    				<ul>
 	    					{% if is_granted('IS_AUTHENTICATED_REMEMBERED') %}
 	    						<li class="first"><a href="{{ url('fos_user_profile_show') }}">{{ app.user }}</a></li>

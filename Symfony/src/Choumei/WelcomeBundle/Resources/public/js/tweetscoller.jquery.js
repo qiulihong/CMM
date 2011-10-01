@@ -35,8 +35,8 @@ var intervalLimit=0;
 				//var first_child=$(this+" div:#tweet_container")
 				$.ajax({
 					type:"post",
-					//url:"/top-users",
-					url:"/new-flowers",
+					url:"/top-users",
+					//url:"/new-flowers",
 					data: "lim="+limit,
 					success:function(msg){
 						tweets_array=msg.split("~");

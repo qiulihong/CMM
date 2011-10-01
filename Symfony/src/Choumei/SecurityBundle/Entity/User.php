@@ -44,7 +44,8 @@ class User extends BaseUser
     protected $dob = null;
     
     /**
-     * @ORM\Column(name="gender", type="string", columnDefinition="ENUM('male', 'female')")
+     * //@ORM\Column(name="gender", type="string", columnDefinition="ENUM('male', 'female')")
+     * @ORM\Column(name="gender", type="string")
      */
     protected $gender;
     
@@ -65,16 +66,21 @@ class User extends BaseUser
     private $flowers;
     
     /**
-     * @ORM\ManyToMany(targetEntity="User")
-     * @ORM\JoinTable(name="following_follower", 
-     *		joinColumns={@ORM\JoinColumn(name="following_id", referencedColumnName="id")},
-     * 		inverseJoinColumns={@ORM\JoinColumn(name="follower_id", referencedColumnName="id")}
-     * )
+     * //@ORM\ManyToMany(targetEntity="User")
+     * //@ORM\JoinTable(name="following_follower", 
+     *		//joinColumns={@ORM\JoinColumn(name="following_id", referencedColumnName="id")},
+     * 		/inverseJoinColumns={@ORM\JoinColumn(name="follower_id", referencedColumnName="id")}
+     * //)
+     */
+    
+    /**
+     * @ORM\OneToMany(targetEntity="FollowingFollower", mappedBy="follower")
      */
     private $followings;
     
     /**
-     * @ORM\ManyToMany(targetEntity="User", mappedBy="followings")
+     * //@ORM\ManyToMany(targetEntity="User", mappedBy="followings")
+     * @ORM\OneToMany(targetEntity="FollowingFollower", mappedBy="following")
      */
     private $followers;
     
@@ -257,5 +263,65 @@ class User extends BaseUser
     public function getVote()
     {
         return $this->vote;
+    }
+
+    /**
+     * Add flowers
+     *
+     * @param Choumei\SecurityBundle\Entity\Flower $flowers
+     */
+    public function addFlowers(\Choumei\SecurityBundle\Entity\Flower $flowers)
+    {
+        $this->flowers[] = $flowers;
+    }
+
+    /**
+     * Get flowers
+     *
+     * @return Doctrine\Common\Collections\Collection 
+     */
+    public function getFlowers()
+    {
+        return $this->flowers;
+    }
+
+    /**
+     * Add followings
+     *
+     * @param Choumei\SecurityBundle\Entity\FollowingFollower $followings
+     */
+    public function addFollowings(\Choumei\SecurityBundle\Entity\FollowingFollower $followings)
+    {
+        $this->followings[] = $followings;
+    }
+
+    /**
+     * Get followings
+     *
+     * @return Doctrine\Common\Collections\Collection 
+     */
+    public function getFollowings()
+    {
+        return $this->followings;
+    }
+
+    /**
+     * Add followers
+     *
+     * @param Choumei\SecurityBundle\Entity\FollowingFollower $followers
+     */
+    public function addFollowers(\Choumei\SecurityBundle\Entity\FollowingFollower $followers)
+    {
+        $this->followers[] = $followers;
+    }
+
+    /**
+     * Get followers
+     *
+     * @return Doctrine\Common\Collections\Collection 
+     */
+    public function getFollowers()
+    {
+        return $this->followers;
     }
 }

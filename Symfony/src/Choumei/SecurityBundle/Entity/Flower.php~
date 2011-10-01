@@ -34,6 +34,16 @@ class Flower
      * @ORM\Column(name="description", type="string", length=255)
      */
     private $description;
+    
+    /**
+     * @ORM\Column(name="icon_name", type="string", length=255)
+     */
+    private $icon_name;
+    
+    /**
+     * @ORM\Column(name="icon_ext", type="string", length=3)
+     */
+    private $icon_ext;
 
     /**
      * @ORM\ManyToMany(targetEntity="User", mappedBy="flowers")
@@ -88,5 +98,69 @@ class Flower
     public function getDescription()
     {
         return $this->description;
+    }
+    public function __construct()
+    {
+        $this->users = new \Doctrine\Common\Collections\ArrayCollection();
+    }
+    
+    /**
+     * Add users
+     *
+     * @param Choumei\SecurityBundle\Entity\User $users
+     */
+    public function addUsers(\Choumei\SecurityBundle\Entity\User $users)
+    {
+        $this->users[] = $users;
+    }
+
+    /**
+     * Get users
+     *
+     * @return Doctrine\Common\Collections\Collection 
+     */
+    public function getUsers()
+    {
+        return $this->users;
+    }
+
+    /**
+     * Set icon_name
+     *
+     * @param string $iconName
+     */
+    public function setIconName($iconName)
+    {
+        $this->icon_name = $iconName;
+    }
+
+    /**
+     * Get icon_name
+     *
+     * @return string 
+     */
+    public function getIconName()
+    {
+        return $this->icon_name;
+    }
+
+    /**
+     * Set icon_ext
+     *
+     * @param string $iconExt
+     */
+    public function setIconExt($iconExt)
+    {
+        $this->icon_ext = $iconExt;
+    }
+
+    /**
+     * Get icon_ext
+     *
+     * @return string 
+     */
+    public function getIconExt()
+    {
+        return $this->icon_ext;
     }
 }

@@ -123,4 +123,44 @@ class Flower
     {
         return $this->users;
     }
+
+    /**
+     * Set icon_name
+     *
+     * @param string $iconName
+     */
+    public function setIconName($iconName)
+    {
+        $this->icon_name = $iconName;
+    }
+
+    /**
+     * Get icon_name
+     *
+     * @return string 
+     */
+    public function getIconName()
+    {
+        return $this->icon_name;
+    }
+
+    /**
+     * Set icon_ext
+     *
+     * @param string $iconExt
+     */
+    public function setIconExt($iconExt)
+    {
+        $this->icon_ext = $iconExt;
+    }
+
+    /**
+     * Get icon_ext
+     *
+     * @return string 
+     */
+    public function getIconExt()
+    {
+        return $this->icon_ext;
+    }
 }

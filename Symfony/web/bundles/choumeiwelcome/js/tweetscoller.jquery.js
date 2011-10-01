@@ -36,6 +36,7 @@ var intervalLimit=0;
 				$.ajax({
 					type:"post",
 					url:"/top-users",
+					//url:"/new-flowers",
 					data: "lim="+limit,
 					success:function(msg){
 						tweets_array=msg.split("~");

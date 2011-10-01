@@ -3,7 +3,7 @@ $(function(){
         // pass the dom node (ex. $(selector)[0] for jQuery users)
         element: document.getElementById('avatar-uploader'),
         // path to server-side upload script
-        action: '/avatar/edit',
+        action: '/app_dev.php/avatar/edit',
 	    // additional data to send, name-value pairs
 	    params: {},
 	    
@@ -26,18 +26,13 @@ $(function(){
 	    	//alert(responseJSON.img_url + fileName);
 	    	//$('#file-uploader').append($('<div><img src="'+responseJSON.img_url+fileName+'" /></div>'));
 	    	var img	= new Image();
-	    	img.src= responseJSON.img_url + fileName;
-	    	//alert(img.src);
-	    	/*
-	    	 * TODO: need to revamp here
-	    	var imgHeight	= img.height;
-	    	var imgWidth	= img.width;
-    		var cropZone	= initCropResize(responseJSON.img_url+fileName, imgWidth, imgHeight);
-    		$('#file-uploader').hide();
-    		$('#do_crop_button').show();
-    		*/
-	    
-	    	//$('#file-uploader').append();
+	    	img.src= responseJSON.result.img_path_url + '/' + fileName;
+	    	var imgWidth = img.width;
+	    	var imgHeight = img.height;
+	    	//$('#avatar_img').attr('src', responseJSON.result.img_path_url+'/'+responseJSON.result.avatar_file_name);
+	    	var cropAvatarZone	= initCropResizeAvatar(responseJSON.result.img_path_url+'/' + fileName, imgWidth, imgHeight);
+    		$('#avatar-uploader').hide();
+    		$('#crop_avatar_button').show();
 	    },
 	    onCancel: function(id, fileName){},
 	    
