@@ -5,22 +5,18 @@
 	    <div>{{ error }}</div>
 	{% endif %}
 	
-	<form action="{{ path("fos_user_security_check") }}" method="post">
-		<p>
-	    <label for="username">{{ 'security.login.username'|trans({}, 'FOSUserBundle') }}
+	<form id="login_form" action="{{ path("fos_user_security_check") }}" method="post">
+	    <label for="username"><span>{{ 'security.login.username'|trans({}, 'FOSUserBundle') }}</span>
 	    <input type="text" id="username" name="_username" value="{{ last_username }}" />
 	    </label>
-	    <p>
-		
-		<p>	
-	    <label for="password">{{ 'security.login.password'|trans({}, 'FOSUserBundle') }}</label>
+	    
+	    <label for="password"><span>{{ 'security.login.password'|trans({}, 'FOSUserBundle') }}</span>
 	    <input type="password" id="password" name="_password" />
-	    </p>
-	
-		<p>
-	    <input type="checkbox" id="remember_me" name="_remember_me" value="on" />
-	    <label for="remember_me">{{ 'security.login.remember_me'|trans({}, 'FOSUserBundle') }}</label>
-	    </p>
-	    <input type="submit" id="_submit" name="_submit" value="{{ 'security.login.submit'|trans({}, 'FOSUserBundle') }}" />
+	    </label>
+	    
+	    
+	    <label for="remember_me"><span>{{ 'security.login.remember_me'|trans({}, 'FOSUserBundle') }}</span><input type="checkbox" id="remember_me" name="_remember_me" value="on" /></label>
+	    
+	    <input type="submit" id="_submit" name="_submit" class="login_button" value="{{ 'security.login.submit'|trans({}, 'FOSUserBundle') }}" />
 	</form>
 {% endblock body %}
