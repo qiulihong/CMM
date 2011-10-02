@@ -25,6 +25,17 @@ class DefaultController extends Controller
         echo $following->getFollowing();
       }
       */
+      
+      /*
+      $userFlowerRepository  = $em->getRepository('ChoumeiSecurityBundle:UserFlower');
+      $flowers  = $userFlowerRepository->findAll();
+      foreach( $flowers as $flower ){
+        echo $flower->getUserFlowers()->getUsername();
+        echo '-';
+        echo $flower->getFlowers()->getName();
+        echo '<br />';
+      }
+      */
                                  
       //$imageThumb = $this->get('choumei_looks.imagethumb');
       return $this->render('ChoumeiWelcomeBundle:Default:index.html.twig', array('latestLooks'=> $latestLooks));

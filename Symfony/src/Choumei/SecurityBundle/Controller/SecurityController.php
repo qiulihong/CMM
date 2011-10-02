@@ -238,4 +238,22 @@ class SecurityController extends Controller
         return $this->render('ChoumeiSecurityBundle:Security:edit_avatar.html.twig', array('user'=>$user));
       }
     }
+    
+    public function newFlowersAction()
+    {
+      $em = $this->getDoctrine()->getEntityManager();
+      $userFlowerRepository  = $em->getRepository('ChoumeiSecurityBundle:UserFlower');
+      $flowers  = $userFlowerRepository->findAll();
+      
+      $tmp  = array();
+      foreach( $flowers as $flower ){
+        $ret = '<p class="container" style="margin:0;padding:0;border:1px solid #fff;"><p class="column span-2" style="margin-right:0px;"><img src="'.$flower->getUserFlowers()->getAvatar().'" width="50" height="50" /></p><p class="column span-4" style="font-size:0.7em;"><span><a href="'.$this->generateUrl('fos_user_profile_show', array('uid'=>$flower->getUserFlowers()->getId())).'">'. $flower->getUserFlowers()->getUsername().'</a></span> 现在是 '.$flower->getFlowers()->getName().'</span><p class="column span-1-1 last"><img src="/images/flowers/'.$flower->getFlowers()->getIconName().'-small.'.$flower->getFlowers()->getIconExt().'" width="50" height="50" /><p></p>';
+        //echo $flower->getUserFlowers()->getAvatar();
+        //echo '-';
+        //echo $flower->getFlowers()->getName();
+        //echo '<br />';
+          array_push($tmp, $ret);
+      }
+      exit(implode('~', $tmp));
+    }
 }

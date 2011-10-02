@@ -46,9 +46,8 @@ class Flower
     private $icon_ext;
 
     /**
-     * @ORM\ManyToMany(targetEntity="User", mappedBy="flowers")
+     * @ORM\OneToMany(targetEntity="UserFlower", mappedBy="flowers")
      */
-    private $users;
     
     /**
      * Get id

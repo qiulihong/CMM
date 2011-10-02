@@ -35,8 +35,8 @@ var intervalLimit=0;
 				//var first_child=$(this+" div:#tweet_container")
 				$.ajax({
 					type:"post",
-					url:"/top-users",
-					//url:"/new-flowers",
+					//url:"/top-users",
+					url:"/new-flowers",
 					data: "lim="+limit,
 					success:function(msg){
 						tweets_array=msg.split("~");
@@ -89,7 +89,8 @@ var intervalLimit=0;
 						tweet_scroller_time=setInterval('if(cur<0)cur=limit; var msg1="<div id=\'tweet_container\' style=\'display:none;\'></div>";var msg2="<div id=\'tweet-content\' style=\'display:none;\'>"+tweets_array[cur]+"</div>";$(obj).append(msg1);$(obj+">div:first").empty();$(obj+">div:first").slideUp(1500);$(obj+">div:last").slideDown();$(obj+" div:last").prepend(msg2);show_now_timer=setTimeout(\'$(obj+" div:#tweet_container div").fadeIn();\',1500);cur--;setTimeout(\'$(obj+" div:first").remove();\',2000)', 4000);
 				}
 				//get tweet from database after some time interval
-				tweet_get_time=setInterval('$.ajax({type:"post",url:"/top-users",data: "lim="+limit,success:function(msg){tweets_array=msg.split("~");}});', 4000*intervalLimit);
+				//tweet_get_time=setInterval('$.ajax({type:"post",url:"/top-users",data: "lim="+limit,success:function(msg){tweets_array=msg.split("~");}});', 4000*intervalLimit);
+				tweet_get_time=setInterval('$.ajax({type:"post",url:"/new-flowers",data: "lim="+limit,success:function(msg){tweets_array=msg.split("~");}});', 4000*intervalLimit);
 			});
 		}
 	});

@@ -1,3 +1,6 @@
+ChoumeiSecurityBundle_new_flower:
+    pattern: /new-flowers
+    defaults: { _controller: ChoumeiSecurityBundle:Security:newFlowers }
 choumei_profile_avatar_crop:
     pattern: /avatar/crop
     defaults: { _controller: ChoumeiSecurityBundle:Security:cropAvatar }

@@ -61,9 +61,10 @@ class User extends BaseUser
     private $avatar;
     
     /**
-     * @ORM\ManyToMany(targetEntity="Flower", inversedBy="users")
+     * @ORM\OneToMany(targetEntity="UserFlower", mappedBy="userFlowers")
      */
     private $flowers;
+    
     
     /**
      * //@ORM\ManyToMany(targetEntity="User")

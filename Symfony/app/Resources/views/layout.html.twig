@@ -66,7 +66,7 @@
 	    			<div id="topmenu">
 	    				<ul style="position:relative;">
 	    					<li id="menu_looks" onmouseover="$('#menu_looks_submenu').show()" onmouseout="$('#menu_looks_submenu').hide()"><a href="{{ url('looks') }}">打扮</a>
-			    				<ul id="menu_looks_submenu">
+			    				<ul id="menu_looks_submenu" style="margin-top:-5px;">
 			    					<li>最流行</li>
 			    					<li>最新上传</li>
 			    					<li>我关注得</li>
@@ -74,7 +74,7 @@
 			    			</li>
 	    					<li id="popular_chics"><a href="{{ url('looks_chics') }}">时尚达人</a></li>
 	    					<li id="brand_browse" onmouseover="javascript:$('#brands').show()" onmouseout="javascript:$('#brands').hide()"><a href="{{ url('looks_brands') }}">品牌, 分类</a>
-	    						<div id="brands" >
+	    						<div id="brands" style="margin-top:-5px;">
 	    							<ul class="column span-6">
 	    								<li><a href="{{ url('looks_view_brand', {'brandName':'ttt'}) }}">Brand 1</a></li>
 	    								<li>Brand 1</li>

@@ -61,9 +61,10 @@ class User extends BaseUser
     private $avatar;
     
     /**
-     * @ORM\ManyToMany(targetEntity="Flower", inversedBy="users")
+     * @ORM\OneToMany(targetEntity="UserFlower", mappedBy="userFlowers")
      */
     private $flowers;
+    
     
     /**
      * //@ORM\ManyToMany(targetEntity="User")
@@ -74,13 +75,13 @@ class User extends BaseUser
      */
     
     /**
-     * @ORM\OneToMany(targetEntity="FollowingFollower", mappedBy="following")
+     * @ORM\OneToMany(targetEntity="FollowingFollower", mappedBy="follower")
      */
     private $followings;
     
     /**
      * //@ORM\ManyToMany(targetEntity="User", mappedBy="followings")
-     * @ORM\OneToMany(targetEntity="FollowingFollower", mappedBy="follower")
+     * @ORM\OneToMany(targetEntity="FollowingFollower", mappedBy="following")
      */
     private $followers;
     

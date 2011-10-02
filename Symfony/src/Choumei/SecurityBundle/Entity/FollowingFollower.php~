@@ -24,16 +24,16 @@ class FollowingFollower
     /**
      *
      * @ORM\ManyToOne(targetEntity="User")
-     * @ORM\JoinColumn(name="follower_id", referencedColumnName="id")
+     * @ORM\JoinColumn(name="user_id", referencedColumnName="id")
      */
-    private $following;
+    private $follower;
 
     /**
      *
      * @ORM\ManyToOne(targetEntity="User")
      * @ORM\JoinColumn(name="following_id", referencedColumnName="id")
      */
-    private $follower;
+    private $following;
 
     /**
      * @var datetime $created_date
