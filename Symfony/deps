@@ -33,16 +33,28 @@
     git=http://github.com/fabpot/Twig-extensions.git
 
 [metadata]
-    git=http://github.com/schmittjoh/metadata.git
-    version=1.0.0
+	git=https://github.com/schmittjoh/metadata.git
 
 [SensioFrameworkExtraBundle]
     git=http://github.com/sensio/SensioFrameworkExtraBundle.git
     target=/bundles/Sensio/Bundle/FrameworkExtraBundle
 
 [JMSSecurityExtraBundle]
-    git=http://github.com/schmittjoh/JMSSecurityExtraBundle.git
+    git=https://github.com/schmittjoh/JMSSecurityExtraBundle.git
     target=/bundles/JMS/SecurityExtraBundle
+    
+[JMSAopBundle]
+    git=https://github.com/schmittjoh/JMSAopBundle.git
+    target=/bundles/JMS/AopBundle
+
+[cg-library]
+    git=https://github.com/schmittjoh/cg-library.git
+
+; This dependency is optional (you need it if you are using non-service controllers):
+; see https://github.com/schmittjoh/JMSDiExtraBundle/blob/master/Resources/doc/index.rst
+[JMSDiExtraBundle]
+    git=https://github.com/schmittjoh/JMSDiExtraBundle.git
+    target=/bundles/JMS/DiExtraBundle
 
 [SensioDistributionBundle]
     git=http://github.com/sensio/SensioDistributionBundle.git
@@ -60,15 +72,15 @@
     git=git://github.com/FriendsOfSymfony/FOSUserBundle.git
     target=bundles/FOS/UserBundle
 [ValumUploader]
-	git=https://github.com/valums/file-uploader.git
-	
-[DoctrineExtension]
-	git=git://github.com/l3pp4rd/DoctrineExtensions.git
-	target=gedmo-doctrine-extensions
-[DoctrineExtensionsBundle]
-	git=git://github.com/stof/StofDoctrineExtensionsBundle.git
-	target=bundles/Stof/DoctrineExtensionsBundle
+git=https://github.com/valums/file-uploader.git
 
-[KnpMenu]
-	git=https://github.com/knplabs/KnpMenuBundle.git
-	target=bundles/Knp/Bundle/MenuBundle
+[DoctrineExtension]
+    git=git://github.com/l3pp4rd/DoctrineExtensions.git
+    target=gedmo-doctrine-extensions
+[DoctrineExtensionsBundle]
+    git=git://github.com/stof/StofDoctrineExtensionsBundle.git
+    target=bundles/Stof/DoctrineExtensionsBundle
+
+;[KnpMenu]
+;    git=https://github.com/knplabs/KnpMenuBundle.git
+;    target=bundles/Knp/Bundle/MenuBundle

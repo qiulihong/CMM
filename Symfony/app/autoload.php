@@ -5,23 +5,25 @@ use Doctrine\Common\Annotations\AnnotationRegistry;
 
 $loader = new UniversalClassLoader();
 $loader->registerNamespaces(array(
-    'Symfony'          => array(__DIR__.'/../vendor/symfony/src', __DIR__.'/../vendor/bundles'),
-    'Sensio'           => __DIR__.'/../vendor/bundles',
-    'JMS'              => __DIR__.'/../vendor/bundles',
+    'Symfony' => array(__DIR__.'/../vendor/symfony/src', __DIR__.'/../vendor/bundles'),
+    'Sensio' => __DIR__.'/../vendor/bundles',
+    //'JMS' => __DIR__.'/../vendor/bundles',
     'Doctrine\\Common' => __DIR__.'/../vendor/doctrine-common/lib',
-    'Doctrine\\DBAL'   => __DIR__.'/../vendor/doctrine-dbal/lib',
-    'Doctrine'         => __DIR__.'/../vendor/doctrine/lib',
-    'Monolog'          => __DIR__.'/../vendor/monolog/src',
-    'Assetic'          => __DIR__.'/../vendor/assetic/src',
+    'Doctrine\\DBAL' => __DIR__.'/../vendor/doctrine-dbal/lib',
+    'Doctrine' => __DIR__.'/../vendor/doctrine/lib',
+    'Monolog' => __DIR__.'/../vendor/monolog/src',
+    'Assetic' => __DIR__.'/../vendor/assetic/src',
+	'JMS' => __DIR__.'/../vendor/bundles',
     'Metadata'         => __DIR__.'/../vendor/metadata/src',
-    'FOS'			   => __DIR__.'/../vendor/bundles',
-    'Stof'			   => __DIR__.'/../vendor/bundles',
-    'Gedmo'			   => __DIR__.'/../vendor/gedmo-doctrine-extensions/lib',
-    'Knp'			   => __DIR__.'/../vendor/bundles',
+    //'CG'               => __DIR__.'/../vendor/cg-library/src',
+    'FOS' => __DIR__.'/../vendor/bundles',
+    'Stof' => __DIR__.'/../vendor/bundles',
+    'Gedmo' => __DIR__.'/../vendor/gedmo-doctrine-extensions/lib',
+    'Knp' => __DIR__.'/../vendor/bundles',
 ));
 $loader->registerPrefixes(array(
     'Twig_Extensions_' => __DIR__.'/../vendor/twig-extensions/lib',
-    'Twig_'            => __DIR__.'/../vendor/twig/lib',
+    'Twig_' => __DIR__.'/../vendor/twig/lib',
 ));
 
 // intl
@@ -46,4 +48,3 @@ AnnotationRegistry::registerFile(__DIR__.'/../vendor/doctrine/lib/Doctrine/ORM/M
 // the lazy loading of the init file (which is expensive)
 require_once __DIR__.'/../vendor/swiftmailer/lib/classes/Swift.php';
 Swift::registerAutoload(__DIR__.'/../vendor/swiftmailer/lib/swift_init.php');
-

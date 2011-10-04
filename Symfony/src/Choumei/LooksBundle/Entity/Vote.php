@@ -37,6 +37,18 @@ class Vote
     private $remote_addr;
     
     /**
+     * @ORM\ManyToOne(targetEntity="Looks")
+     * @ORM\JoinColumn(name="looks_id", referencedColumnName="id")
+     */
+    private $looks;
+    
+    /**
+     * @ORM\ManyToOne(targetEntity="Choumei\SecurityBundle\Entity\User")
+     * @ORM\JoinColumn(name="user_id", referencedColumnName="id")
+     */
+    private $user;
+    
+    /**
      * @var datetime $created_at
      * 
      * @Gedmo\Timestampable(on="create")
@@ -164,5 +176,45 @@ class Vote
     public function getUserId()
     {
         return $this->user_id;
+    }
+
+    /**
+     * Set looks
+     *
+     * @param Choumei\LooksBundle\Entity\Looks $looks
+     */
+    public function setLooks(\Choumei\LooksBundle\Entity\Looks $looks)
+    {
+        $this->looks = $looks;
+    }
+
+    /**
+     * Get looks
+     *
+     * @return Choumei\LooksBundle\Entity\Looks 
+     */
+    public function getLooks()
+    {
+        return $this->looks;
+    }
+
+    /**
+     * Set user
+     *
+     * @param Choumei\SecurityBundle\Entity\User $user
+     */
+    public function setUser(\Choumei\SecurityBundle\Entity\User $user)
+    {
+        $this->user = $user;
+    }
+
+    /**
+     * Get user
+     *
+     * @return Choumei\SecurityBundle\Entity\User 
+     */
+    public function getUser()
+    {
+        return $this->user;
     }
 }

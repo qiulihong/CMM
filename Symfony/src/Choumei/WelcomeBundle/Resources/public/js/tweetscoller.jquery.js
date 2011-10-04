@@ -36,7 +36,7 @@ var intervalLimit=0;
 				$.ajax({
 					type:"post",
 					//url:"/top-users",
-					url:"/new-flowers",
+					url:"/latest-flowers",
 					data: "lim="+limit,
 					success:function(msg){
 						tweets_array=msg.split("~");
@@ -90,7 +90,7 @@ var intervalLimit=0;
 				}
 				//get tweet from database after some time interval
 				//tweet_get_time=setInterval('$.ajax({type:"post",url:"/top-users",data: "lim="+limit,success:function(msg){tweets_array=msg.split("~");}});', 4000*intervalLimit);
-				tweet_get_time=setInterval('$.ajax({type:"post",url:"/new-flowers",data: "lim="+limit,success:function(msg){tweets_array=msg.split("~");}});', 4000*intervalLimit);
+				tweet_get_time=setInterval('$.ajax({type:"post",url:"/latest-flowers",data: "lim="+limit,success:function(msg){tweets_array=msg.split("~");}});', 4000*intervalLimit);
 			});
 		}
 	});

@@ -31,7 +31,7 @@ class User extends BaseUser
     /**
      * @ORM\OneToMany(targetEntity="Choumei\LooksBundle\Entity\Vote", mappedBy="user")
      */
-    private $vote;
+    private $votes;
 
     /**
      * @ORM\Column(name="location", type="string")
@@ -324,5 +324,50 @@ class User extends BaseUser
     public function getFollowers()
     {
         return $this->followers;
+    }
+    
+    /**
+     * is followed or not other user
+     */
+    public function isFollowedBy($userId)
+    {
+      $isFollowed = false;
+      $followers  = $this->getFollowers();
+      foreach( $followers as $follower){
+        if( $follower->getFollower()->getId() == $userId ){
+          return true;
+        }
+      }
+      return $isFollowed;
+    }
+
+    /**
+     * Get votes
+     *
+     * @return Doctrine\Common\Collections\Collection 
+     */
+    public function getVotes()
+    {
+        return $this->votes;
+    }
+
+    /**
+     * Add flowers
+     *
+     * @param Choumei\SecurityBundle\Entity\UserFlower $flowers
+     */
+    public function addUserFlower(\Choumei\SecurityBundle\Entity\UserFlower $flowers)
+    {
+        $this->flowers[] = $flowers;
+    }
+
+    /**
+     * Add followings
+     *
+     * @param Choumei\SecurityBundle\Entity\FollowingFollower $followings
+     */
+    public function addFollowingFollower(\Choumei\SecurityBundle\Entity\FollowingFollower $followings)
+    {
+        $this->followings[] = $followings;
     }
 }

@@ -3,6 +3,7 @@
 namespace Choumei\SecurityBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Gedmo\Mapping\Annotation as Gedmo;
 
 /**
  * Choumei\SecurityBundle\Entity\FollowingFollower
@@ -38,6 +39,7 @@ class FollowingFollower
     /**
      * @var datetime $created_date
      *
+     * @Gedmo\Timestampable(on="create")
      * @ORM\Column(name="created_date", type="datetime")
      */
     private $created_date;

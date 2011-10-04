@@ -4,6 +4,7 @@ namespace Choumei\SecurityBundle\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\Security\Core\SecurityContext;
+use Choumei\SecurityBundle\Entity\FollowingFollower;
 
 require_once(dirname(__FILE__).'/../../LooksBundle/Resources/php.php');
 
@@ -239,7 +240,7 @@ class SecurityController extends Controller
       }
     }
     
-    public function newFlowersAction()
+    public function latestFlowersAction()
     {
       $em = $this->getDoctrine()->getEntityManager();
       $userFlowerRepository  = $em->getRepository('ChoumeiSecurityBundle:UserFlower');
@@ -255,5 +256,36 @@ class SecurityController extends Controller
           array_push($tmp, $ret);
       }
       exit(implode('~', $tmp));
+    }
+    
+    /**
+     * follow new user
+     */
+    public function addFollowAction($user_id)
+    {
+      $request  = $this->getRequest();
+      
+      $em  = $this->getDoctrine()->getEntityManager();
+      $userRepository  = $em->getRepository('ChoumeiSecurityBundle:User');
+      if(!$following = $userRepository->find($user_id)){
+        exit('bad user id'); 
+      }else{
+        $currentUser  = $this->get('security.context')->getToken()->getUser();
+        if( $currentUser ){
+          if( $currentUser->getId() != $user_id ){
+	        $followingFollower  = new FollowingFollower();
+	        $followingFollower->setFollower($currentUser);
+	        $followingFollower->setFollowing($following);
+	        //$followingFollower->setCreatedDate(date('Y-m-d H:i:s', time()));
+	        $em->persist($followingFollower);
+	        $em->flush();
+	        exit(json_encode(array('success'=>true)));
+          }else{ // cannot follow self
+            exit( json_encode(array('success'=>false, 'message'=>'不能关注你自己噢')) );
+          }
+        }else{
+          exit( json_encode(array('success'=>false, 'message'=>'请先登录:)')) );
+        }
+      }
     }
 }

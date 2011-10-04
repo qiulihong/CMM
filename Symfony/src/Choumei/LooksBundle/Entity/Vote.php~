@@ -37,6 +37,18 @@ class Vote
     private $remote_addr;
     
     /**
+     * @ORM\ManyToOne(targetEntity="Looks")
+     * @ORM\JoinColumn(name="looks_id", referencedColumnName="id")
+     */
+    private $looks;
+    
+    /**
+     * @ORM\ManyToOne(targetEntity="Choumei\SecurityBundle\Entity\User")
+     * @ORM\JoinColumn(name="user_id", referencedColumnName="id")
+     */
+    private $user;
+    
+    /**
      * @var datetime $created_at
      * 
      * @Gedmo\Timestampable(on="create")

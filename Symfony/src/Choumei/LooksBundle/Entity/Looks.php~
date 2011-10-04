@@ -76,6 +76,11 @@ class Looks
     private $user;
     
     /**
+     * @ORM\OneToMany(targetEntity="Vote", mappedBy="looks")
+     */
+    private $votes;
+    
+    /**
      * @var datetime $created_at
      * 
      * @Gedmo\Timestampable(on="create")
@@ -318,4 +323,5 @@ class Looks
     {
         return $this->updated_at;
     }
+    
 }

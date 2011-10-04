@@ -124,4 +124,45 @@ class UserFlower
     {
         return $this->created_date;
     }
+
+    /**
+     * Set userFlowers
+     *
+     * @param Choumei\SecurityBundle\Entity\User $userFlowers
+     */
+    public function setUserFlowers(\Choumei\SecurityBundle\Entity\User $userFlowers)
+    {
+        $this->userFlowers = $userFlowers;
+    }
+
+    /**
+     * Get userFlowers
+     *
+     * @return Choumei\SecurityBundle\Entity\User 
+     */
+    public function getUserFlowers()
+    {
+        return $this->userFlowers;
+    }
+
+    /**
+     * Set flowers
+     *
+     * @param Choumei\SecurityBundle\Entity\Flower $flowers
+     */
+    public function setFlowers(\Choumei\SecurityBundle\Entity\Flower $flowers)
+    {
+        $this->flowers = $flowers;
+    }
+
+    /**
+     * Get flowers
+     *
+     * @return Choumei\SecurityBundle\Entity\Flower 
+     */
+    public function getFlowers()
+    {
+        return $this->flowers;
+    }
+    
 }

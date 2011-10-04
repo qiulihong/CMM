@@ -76,6 +76,11 @@ class Looks
     private $user;
     
     /**
+     * @ORM\OneToMany(targetEntity="Vote", mappedBy="looks")
+     */
+    private $votes;
+    
+    /**
      * @var datetime $created_at
      * 
      * @Gedmo\Timestampable(on="create")
@@ -317,5 +322,66 @@ class Looks
     public function getUpdatedAt()
     {
         return $this->updated_at;
+    }
+    
+
+    /**
+     * Add accessories
+     *
+     * @param Choumei\LooksBundle\Entity\Accessory $accessories
+     */
+    public function addAccessory(\Choumei\LooksBundle\Entity\Accessory $accessories)
+    {
+        $this->accessories[] = $accessories;
+    }
+
+    /**
+     * Add tags
+     *
+     * @param Choumei\LooksBundle\Entity\Tag $tags
+     */
+    public function addTag(\Choumei\LooksBundle\Entity\Tag $tags)
+    {
+        $this->tags[] = $tags;
+    }
+
+    /**
+     * Add styles
+     *
+     * @param Choumei\LooksBundle\Entity\Style $styles
+     */
+    public function addStyle(\Choumei\LooksBundle\Entity\Style $styles)
+    {
+        $this->styles[] = $styles;
+    }
+
+    /**
+     * Add comments
+     *
+     * @param Choumei\LooksBundle\Entity\Comment $comments
+     */
+    public function addComment(\Choumei\LooksBundle\Entity\Comment $comments)
+    {
+        $this->comments[] = $comments;
+    }
+
+    /**
+     * Add votes
+     *
+     * @param Choumei\LooksBundle\Entity\Vote $votes
+     */
+    public function addVote(\Choumei\LooksBundle\Entity\Vote $votes)
+    {
+        $this->votes[] = $votes;
+    }
+
+    /**
+     * Get votes
+     *
+     * @return Doctrine\Common\Collections\Collection 
+     */
+    public function getVotes()
+    {
+        return $this->votes;
     }
 }

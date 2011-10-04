@@ -1,6 +1,11 @@
+ChoumeiSecurityBundle_follow:
+    pattern: /follow/{user_id}
+    defaults: { _controller: ChoumeiSecurityBundle:Security:addFollow }
+    requirements:
+      user_id: \d+
 ChoumeiSecurityBundle_new_flower:
-    pattern: /new-flowers
-    defaults: { _controller: ChoumeiSecurityBundle:Security:newFlowers }
+    pattern: /latest-flowers
+    defaults: { _controller: ChoumeiSecurityBundle:Security:latestFlowers }
 choumei_profile_avatar_crop:
     pattern: /avatar/crop
     defaults: { _controller: ChoumeiSecurityBundle:Security:cropAvatar }

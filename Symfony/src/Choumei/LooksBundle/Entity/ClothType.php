@@ -121,4 +121,14 @@ class ClothType
       return $this->name;
     }
     
+
+    /**
+     * Add children
+     *
+     * @param Choumei\LooksBundle\Entity\ClothType $children
+     */
+    public function addClothType(\Choumei\LooksBundle\Entity\ClothType $children)
+    {
+        $this->children[] = $children;
+    }
 }
