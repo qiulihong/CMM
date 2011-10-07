@@ -26,10 +26,6 @@ ChoumeiSecurityBundle:
     resource: "@ChoumeiSecurityBundle/Resources/config/routing.yml"
     prefix:   /
 
-ChoumeiHelloBundle:
-    resource: "@ChoumeiHelloBundle/Resources/config/routing.yml"
-    prefix:   /
-
 _welcome:
     pattern:  /
     defaults: { _controller: ChoumeiWelcomeBundle:Default:index }

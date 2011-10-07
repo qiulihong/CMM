@@ -7,6 +7,7 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 use Choumei\LooksBundle\Entity\Looks;
+use Choumei\LooksBundle\Entity\Vote;
 use Choumei\LooksBundle\Entity\Accessory;
 use Choumei\LooksBundle\Form\LooksType;
 
@@ -452,5 +453,36 @@ class LooksController extends Controller
 	public function newFlowersAwards()
 	{
 	  
+	}
+	
+	/**
+	 * Vote looks
+	 * 
+	 * @Route("/vote", name="looks_vote")
+	 * @Method("post")
+	 * @Template()
+	 */
+	public function voteAction()
+	{
+	  $request  = $this->getRequest();
+	  
+	  $userId  = $request->get("user_id");
+	  $looksId  = $request->get("looks_id");
+	  
+	  $remoteAddr  = $_SERVER['REMOTE_ADDR'];
+	  
+	  $em  = $this->getDoctrine()->getEntityManager();
+	  $vote  = new Vote();
+	  
+	  $looksRepo = $em->getRepository('ChoumeiLooksBundle:Looks');
+	  $looks  = $looksRepo->find($looksId);
+	  
+	  $vote->setLooks($looks);
+	  $vote->setRemoteAddr($remoteAddr);
+	  $vote->setUserId($userId);
+	  $em->persist($vote);
+	  $em->flush();
+	  
+	  exit(json_encode(array('user_id'=>$userId, 'remote_addr'=>$remoteAddr)));
 	}
 }

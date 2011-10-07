@@ -36,17 +36,25 @@
 								<div class="looks_wrapper_head" class="span-11-5" style="">
 									<div class="looks_wrapper_subhead" >
 										<div class="column span-2 vote_block" >
-											<span class="vote_count">10</span>
-											<span class="vote_action" rel="looks_{{ looks.getId() }}">{{ 'choumei.looks.vote'|trans({}, 'ChoumeiLooksBundle') }}</span>
+											<span class="vote_count">{{ looks.votes|count }}</span>
+											{% if is_granted('IS_AUTHENTICATED_REMEMBERED') %}
+												<a href="javascript:void(0);" onClick="javascript:doVote({{ app.user.id }}, {{ looks.getId() }});"><span class="vote_action" data-looks_id="{{ looks.getId() }}" rel="looks_{{ looks.getId() }}">{{ 'choumei.looks.vote'|trans({}, 'ChoumeiLooksBundle') }}</span></a>
+											{% else %}
+												<a href="javascript:void(0);" onClick="javascript:alert('need login')"><span class="vote_action" data-looks_id="{{ looks.getId() }}" rel="looks_{{ looks.getId() }}">{{ 'choumei.looks.vote'|trans({}, 'ChoumeiLooksBundle') }}</span></a>
+											{% endif %}
 										</div>
 										<div class="column span-8 last" id="">
 											<div class="column" style="height:70px;padding:0;">
 												<div class="avatar_main"><img src="{{ looks.user.avatar }}" /></div>
 												<!-- div class="follow_user"><a href="{{ path('ChoumeiSecurityBundle_follow', {'user_id': looks.user.id}) }}">+{{ 'choumei.user.follow'|trans({}, 'ChoumeiLooksBundle') }}</a></div //-->
-												{% if not looks.user.isFollowedBy(app.user.getId()) %}
-													<div class="follow_user"><a href="javascript:void(0);" onClick="follow({{ looks.user.id }})">+{{ 'choumei.user.follow'|trans({}, 'ChoumeiLooksBundle') }}</a></div>
+												{% if is_granted('IS_AUTHENTICATED_REMEMBER') %}
+													{% if not looks.user.isFollowedBy(app.user.getId()) %}
+														<div class="follow_user"><a href="javascript:void(0);" onClick="follow({{ looks.user.id }})">+{{ 'choumei.user.follow'|trans({}, 'ChoumeiLooksBundle') }}</a></div>
+													{% else %}
+														<div class="follow_user">{{ 'choumei.user.followed'|trans({}, 'ChoumeiLooksBundle') }}</div>
+													{% endif %}
 												{% else %}
-													<div class="follow_user">{{ 'choumei.user.followed'|trans({}, 'ChoumeiLooksBundle') }}</div>
+													<div class="follow_user"><a href="javascript:void(0);" onClick="follow({{ looks.user.id }})">+{{ 'choumei.user.follow'|trans({}, 'ChoumeiLooksBundle') }}</a></div>
 												{% endif %}
 											</div>
 											<div class="column">

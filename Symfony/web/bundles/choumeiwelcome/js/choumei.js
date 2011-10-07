@@ -158,3 +158,18 @@ $(function(){
 	$(function() {
 		$( "#tabs" ).tabs();
 	});
+
+function follow(user_id) {
+	$.ajax({
+		url: '/follow/'+user_id,
+		type:'post',
+		dataType: 'json',
+		success: function(data){
+			if(!data.success){
+				alert(data.message);
+			}else{
+				$(this).html('kk');
+			}
+		}
+	});
+}

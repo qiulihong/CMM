@@ -9,6 +9,7 @@ class TwigExtension extends \Twig_Extension
     return array(
       'fetchX'	=> new \Twig_Filter_Method($this, 'fetchX'),
       'fetchY'	=> new \Twig_Filter_Method($this, 'fetchY'),
+      'count'	=> new \Twig_Filter_Method($this, 'count'),
     );
   }
   
@@ -22,6 +23,11 @@ class TwigExtension extends \Twig_Extension
   {
     $p  = json_decode($position);
     return $p->y;
+  }
+  
+  public function count($items)
+  {
+    return count($items) > 0 ? count($items) : 0;
   }
   
   public function getName()

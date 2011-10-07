@@ -1,3 +1,6 @@
 ChoumeiWelcomeBundle_homepage:
     pattern:  /hello/{name}
     defaults: { _controller: ChoumeiWelcomeBundle:Default:index }
+looks:
+    pattern: /looks
+    defaults: { _controller: ChoumeiWelcomeBundle:Default:index }

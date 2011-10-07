@@ -19,7 +19,7 @@ class AppKernel extends Kernel
                 //new JMS\AopBundle\JMSAopBundle(),
             new JMS\SecurityExtraBundle\JMSSecurityExtraBundle(),
                 //new JMS\DiExtraBundle\JMSDiExtraBundle($this),
-            new Choumei\HelloBundle\ChoumeiHelloBundle(),
+            //new Choumei\HelloBundle\ChoumeiHelloBundle(),
             new Choumei\SecurityBundle\ChoumeiSecurityBundle(),
             new Choumei\WelcomeBundle\ChoumeiWelcomeBundle(),
             new Choumei\LooksBundle\ChoumeiLooksBundle(),
