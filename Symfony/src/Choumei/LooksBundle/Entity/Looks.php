@@ -384,4 +384,20 @@ class Looks
     {
         return $this->votes;
     }
+    
+    /**
+     * Get all user ids who voted the current looks
+     * Enter description here ...
+     */
+    public function getVotedUserIds()
+    {
+      $votes  = $this->getVotes();
+      $userIds  = array();
+      
+      foreach($votes as $vote){
+        $userIds[] = $vote->getUserId();
+      }
+      
+      return $userIds;
+    }
 }

@@ -217,4 +217,5 @@ class Vote
     {
         return $this->user;
     }
+    
 }

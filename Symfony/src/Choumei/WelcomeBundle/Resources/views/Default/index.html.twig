@@ -36,7 +36,7 @@
 								<div class="looks_wrapper_head" class="span-11-5" style="">
 									<div class="looks_wrapper_subhead" >
 										<div class="column span-2 vote_block" >
-											<span class="vote_count">{{ looks.votes|count }}</span>
+											<span class="vote_count" id="looks_vote_count_{{ looks.getId() }}">{{ looks.votes|count }}</span>
 											{% if is_granted('IS_AUTHENTICATED_REMEMBERED') %}
 												<a href="javascript:void(0);" onClick="javascript:doVote({{ app.user.id }}, {{ looks.getId() }});"><span class="vote_action" data-looks_id="{{ looks.getId() }}" rel="looks_{{ looks.getId() }}">{{ 'choumei.looks.vote'|trans({}, 'ChoumeiLooksBundle') }}</span></a>
 											{% else %}
@@ -68,7 +68,10 @@
 										<div class="clear" style="height:0;line-height:0;">&nbsp;</div>
 									</div>
 								</div>
-								<div class="looks_actions">Head Actions</div>
+								<div class="looks_actions contents" style="height:35px;position:relative;">
+									<div class="column span-8">Head Actions</div>
+									<div class="column last span-2 " style="text-align:right;"><a href="{{ path('looks_show', {'id': looks.id }) }}#comments"><span>2</span><span class="comment_icon"></span></a></div>
+								</div>
 								<div class="looks_tags">
 									<ul>
 										{% set tagIndex = 0 %}

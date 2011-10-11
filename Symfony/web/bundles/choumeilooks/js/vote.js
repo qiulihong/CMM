@@ -20,8 +20,10 @@ function doVote(user_id, looks_id){
 		type: 'post',
 		dataType: 'json',
 		success: function(data){
-			alert(data.user_id);
-			alert(data.remote_addr);
+			if(data.success){
+				$('#looks_vote_count_' + looks_id).text(data.count);
+			}
+			alert(data.message);
 		}
 	});
 }

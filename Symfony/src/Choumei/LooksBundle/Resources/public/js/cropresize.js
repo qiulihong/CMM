@@ -42,6 +42,8 @@ function doCropResize(cropZone)
 		$('#create_looks_form').show();
 		$('#image_source').hide();
 		$('#do_crop_button').hide();
+		// update step info
+		$('h2').text('第二步：标注品牌');
 	});
 	
 }

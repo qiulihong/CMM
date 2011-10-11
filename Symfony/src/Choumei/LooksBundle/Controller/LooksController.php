@@ -472,17 +472,26 @@ class LooksController extends Controller
 	  $remoteAddr  = $_SERVER['REMOTE_ADDR'];
 	  
 	  $em  = $this->getDoctrine()->getEntityManager();
-	  $vote  = new Vote();
 	  
 	  $looksRepo = $em->getRepository('ChoumeiLooksBundle:Looks');
 	  $looks  = $looksRepo->find($looksId);
-	  
-	  $vote->setLooks($looks);
-	  $vote->setRemoteAddr($remoteAddr);
-	  $vote->setUserId($userId);
-	  $em->persist($vote);
-	  $em->flush();
-	  
-	  exit(json_encode(array('user_id'=>$userId, 'remote_addr'=>$remoteAddr)));
+	  $votedUserIds  = $looks->getVotedUserIds();
+	  if ( in_array($userId, $votedUserIds)){
+	    exit(json_encode(array('success'=>false, 'message'=>'您已经投过票了:)')));
+	  }else{
+		  $vote  = new Vote();
+		  
+		  $vote->setLooks($looks);
+		  $vote->setRemoteAddr($remoteAddr);
+		  $vote->setUserId($userId);
+		  $em->persist($vote);
+		  $em->flush();
+		  
+		  exit(json_encode(array('success'=>true, 'message'=>'感谢亲的支持哦', 'user_id'=>$userId, 'remote_addr'=>$remoteAddr, 'count'=>count($votedUserIds)+1)));
+	  }
 	}
+	
+	/**
+	 * 
+	 */
 }

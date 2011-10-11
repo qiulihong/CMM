@@ -4,6 +4,9 @@
     display:block; /* or inline-block */
     width: 105px; padding: 7px 0; text-align:center;    
     background:#880000; border-bottom:1px solid #ddd;color:#fff;
+    border-radius: 4px;
+    webkit-border-radius: 4px;
+    moz-border-radius: 4px;
 }
 .qq-upload-accessory-button{
 	padding:5px;

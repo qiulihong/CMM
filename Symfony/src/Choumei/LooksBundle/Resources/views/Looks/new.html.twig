@@ -16,7 +16,8 @@
 	{% endstylesheets%}
 {% endblock %}
 {% block body %}
-<h1>Looks creation</h1>
+<h1>分享打扮</h1>
+<h2>第一步：上传照片</h2>
 	<form action="{{ path('looks_create') }}" method="post" {{ form_enctype(form) }}>
 <!-- upload image -->
 <div id="file-uploader">
@@ -40,7 +41,7 @@
 	    <p>
 	    	<script>
 	    	</script>
-	        <button type="submit">Create</button> <!--a href="javascript:void(0)" onclick="javascript:addAccessoryElement();">Add</a-->
+	        <button type="submit" class="finish_upload_button">完成</button> <!--a href="javascript:void(0)" onclick="javascript:addAccessoryElement();">Add</a-->
 	    </p>
 	    <!-- end form originally -->
 </div>
@@ -48,7 +49,7 @@
 <ul class="record_actions">
     <li>
         <a href="{{ path('looks') }}">
-            Back to the list
+           返回‘打扮’列表 
         </a>
     </li>
 </ul>
