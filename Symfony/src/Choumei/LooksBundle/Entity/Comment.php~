@@ -21,20 +21,12 @@ class Comment
      */
     private $id;
 
-    /**
-     * @var integer $look_id
-     *
-     * @ORM\Column(name="look_id", type="integer")
-     */
-    private $look_id;
 
     /**
-     * @var integer $user_id
-     *
-     * @ORM\Column(name="user_id", type="integer")
+     * @ORM\ManyToOne(targetEntity="Choumei\SecurityBundle\Entity\User", inversedBy="comments")
      */
-    private $user_id;
-
+    private $user;
+    
     /**
      * @var datetime $created_at
      *

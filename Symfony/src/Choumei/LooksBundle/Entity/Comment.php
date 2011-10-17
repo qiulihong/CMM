@@ -3,6 +3,7 @@
 namespace Choumei\LooksBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Gedmo\Mapping\Annotation as Gedmo;
 
 /**
  * Choumei\LooksBundle\Entity\Comment
@@ -21,23 +22,16 @@ class Comment
      */
     private $id;
 
-    /**
-     * @var integer $look_id
-     *
-     * @ORM\Column(name="look_id", type="integer")
-     */
-    private $look_id;
 
     /**
-     * @var integer $user_id
-     *
-     * @ORM\Column(name="user_id", type="integer")
+     * @ORM\ManyToOne(targetEntity="Choumei\SecurityBundle\Entity\User", inversedBy="comments")
      */
-    private $user_id;
-
+    private $user;
+    
     /**
      * @var datetime $created_at
      *
+     * @Gedmo\Timestampable(on="create")
      * @ORM\Column(name="created_at", type="datetime")
      */
     private $created_at;
@@ -191,5 +185,25 @@ class Comment
     public function getLooks()
     {
         return $this->looks;
+    }
+
+    /**
+     * Set user
+     *
+     * @param Choumei\SecurityBundle\Entity\User $user
+     */
+    public function setUser(\Choumei\SecurityBundle\Entity\User $user)
+    {
+        $this->user = $user;
+    }
+
+    /**
+     * Get user
+     *
+     * @return Choumei\SecurityBundle\Entity\User 
+     */
+    public function getUser()
+    {
+        return $this->user;
     }
 }

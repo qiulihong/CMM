@@ -29,6 +29,11 @@ class User extends BaseUser
     private $looks;
     
     /**
+     * @ORM\OneToMany(targetEntity="Choumei\LooksBundle\Entity\Comment", mappedBy="user")
+     */
+    private $comments;
+    
+    /**
      * @ORM\OneToMany(targetEntity="Choumei\LooksBundle\Entity\Vote", mappedBy="user")
      */
     private $votes;
@@ -369,5 +374,25 @@ class User extends BaseUser
     public function addFollowingFollower(\Choumei\SecurityBundle\Entity\FollowingFollower $followings)
     {
         $this->followings[] = $followings;
+    }
+
+    /**
+     * Add comments
+     *
+     * @param Choumei\LooksBundle\Entity\Comment $comments
+     */
+    public function addComment(\Choumei\LooksBundle\Entity\Comment $comments)
+    {
+        $this->comments[] = $comments;
+    }
+
+    /**
+     * Get comments
+     *
+     * @return Doctrine\Common\Collections\Collection 
+     */
+    public function getComments()
+    {
+        return $this->comments;
     }
 }

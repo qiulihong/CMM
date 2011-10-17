@@ -371,9 +371,10 @@ li#menu_looks ul {
 	border-top-right-radius: 3px;
 	
 }
-ul.looks li{
+ul.looks li, div#looks_detail li{
 	display:block;
 }
+div#looks_detail { height: 530px; }
 .looks_img{
 	margin:0;
 	padding:0;	
@@ -386,7 +387,7 @@ ul.looks li{
 	margin:0;
 	padding:0;
 }
-ul.looks h3{
+ul.looks h3, div#looks_detail h3{
 	padding:0;
 	margin:0;
 }
@@ -470,3 +471,5 @@ div.fos_user_user_show p {
 #login_form label input { height:25px; line-height:25px;}
 
 .comment_icon { background:url(../images/new-all-sprites.png) no-repeat scroll 0 -11px transparent;width:17px;height:19px; color:#FFFFFF;border:0; display:block; float:left;position:absolute;top:15px;right:15px;text-align:right;}
+
+div#comments ul li{ display:block; }

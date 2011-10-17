@@ -9,7 +9,9 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 use Choumei\LooksBundle\Entity\Looks;
 use Choumei\LooksBundle\Entity\Vote;
 use Choumei\LooksBundle\Entity\Accessory;
+use Choumei\LooksBundle\Entity\Comment;
 use Choumei\LooksBundle\Form\LooksType;
+use Choumei\LooksBundle\Form\CommentType;
 
 require_once(dirname(__FILE__).'/../Resources/php.php');
 /**
@@ -54,11 +56,20 @@ class LooksController extends Controller
             throw $this->createNotFoundException('Unable to find Looks entity.');
         }
 
+        $comment  = new Comment();
+        $comment->setLooks($entity);
+        $comment->setUser($this->get('security.context')->getToken()->getUser());
+        $comment->setCommentId(0);
+        
         $deleteForm = $this->createDeleteForm($id);
+        $commentForm  = $this->createForm(new CommentType, $comment);
 
         return array(
-            'entity'      => $entity,
-            'delete_form' => $deleteForm->createView(),        );
+	        'entity'      => $entity,
+	        'looks'		  => $entity,
+	        'delete_form' => $deleteForm->createView(),        
+            'comment_form'	=> $commentForm->createView(),
+        );
     }
 
     /**
@@ -173,6 +184,7 @@ class LooksController extends Controller
         $editForm->bindRequest($request);
 
         if ($editForm->isValid()) {
+        
             $em->persist($entity);
             $em->flush();
 
@@ -491,7 +503,4 @@ class LooksController extends Controller
 	  }
 	}
 	
-	/**
-	 * 
-	 */
 }

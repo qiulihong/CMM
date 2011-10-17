@@ -76,7 +76,7 @@ class Looks
     private $user;
     
     /**
-     * @ORM\OneToMany(targetEntity="Vote", mappedBy="looks")
+     * @ORM\OneToMany(targetEntity="Vote", mappedBy="looks", cascade={"all"})
      */
     private $votes;
     

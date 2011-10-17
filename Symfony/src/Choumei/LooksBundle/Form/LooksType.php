@@ -16,7 +16,7 @@ class LooksType extends AbstractType
             ->add('accessories', 'collection', array('type'=>new AccessoryType(), 'allow_add'=>true))
             ->add('tags', 'collection', array('type'=>new TagType(), 'allow_add'=>true ))
             //->add('styles')
-            //->add('user')
+            ->add('user')
         ;
     }
 

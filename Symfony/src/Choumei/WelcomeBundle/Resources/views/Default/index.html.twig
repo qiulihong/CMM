@@ -70,7 +70,7 @@
 								</div>
 								<div class="looks_actions contents" style="height:35px;position:relative;">
 									<div class="column span-8">Head Actions</div>
-									<div class="column last span-2 " style="text-align:right;"><a href="{{ path('looks_show', {'id': looks.id }) }}#comments"><span>2</span><span class="comment_icon"></span></a></div>
+									<div class="column last span-2 " style="text-align:right;"><a href="{{ path('looks_show', {'id': looks.id }) }}#comments"><span>{{ looks.comments|count }}</span><span class="comment_icon"></span></a></div>
 								</div>
 								<div class="looks_tags">
 									<ul>
