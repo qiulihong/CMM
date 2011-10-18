@@ -38,6 +38,11 @@ class qqUploadedFileXhr {
         }      
     }   
     
+    function getImageInfo($image)
+    {
+      return getimagesize($image);
+    }
+    
     public function resize($file, $width, $height, $path){
       $imageThumb  = \PhpThumbFactory::create($file);
       $imageThumb->resize($width, $height);
@@ -67,6 +72,10 @@ class qqUploadedFileForm {
     }
     function getSize() {
         return $_FILES['qqfile']['size'];
+    }
+    function getImageInfo($image)
+    {
+      return getimagesize($image);
     }
     
     public function resize($file, $width, $height, $path){
@@ -135,6 +144,7 @@ class qqFileUploader {
         }
         
         $size = $this->file->getSize();
+        $imgInfo = $this->file->getImageInfo();
         
         if ($size == 0) {
             return array('error' => 'File is empty');
@@ -167,7 +177,8 @@ class qqFileUploader {
             $this->file->resize($uploadDirectory . $filename . '.' . $ext, $avatarSize['width'], $avatarSize['height'], $uploadDirectory . $filename . '_ava.' . $ext);
           }
           //
-            return array('success'=>true, 'avatar_file_name'=>$filename.'_ava.' . $ext);
+          $imgInfo = $this->file->getImageInfo($uploadDirectory . $filename . '.' . $ext);
+            return array('success'=>true, 'avatar_file_name'=>$filename.'_ava.' . $ext, 'imgInfo' => $imgInfo);
         } else {
             return array('error'=> 'Could not save uploaded file.' .
                 'The upload was cancelled, or server error encountered');
