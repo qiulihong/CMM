@@ -4,3 +4,10 @@ ChoumeiWelcomeBundle_homepage:
 looks:
     pattern: /looks
     defaults: { _controller: ChoumeiWelcomeBundle:Default:index }
+
+about_us:
+    pattern: /about-us
+    defaults: { _controller: ChoumeiWelcomeBundle:Default:aboutUs }
+business:
+    pattern: /business
+    defaults: { _controller: ChoumeiWelcomeBundle:Default:business }

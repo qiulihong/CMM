@@ -429,7 +429,7 @@ class LooksController extends Controller
     /**
      * Finds and displays most fashion chics
      *
-     * @Route("/show/chics", name="looks_chics")
+     * @Route("/chics", name="looks_chics")
      * @Template()
      */
 	public function chicsAction(){
@@ -501,6 +501,31 @@ class LooksController extends Controller
 		  
 		  exit(json_encode(array('success'=>true, 'message'=>'感谢亲的支持哦', 'user_id'=>$userId, 'remote_addr'=>$remoteAddr, 'count'=>count($votedUserIds)+1)));
 	  }
+	}
+	
+	/**
+	 * @Route("/most_popular", name="looks_most_popular")
+	 * @Template()
+	 */
+	public function mostPopularAction()
+	{
+	}
+	
+	/**
+	 * @Route("/most_latest", name="looks_most_latest")
+	 * @Template()
+	 */
+	public function mostLatestAction()
+	{
+	}
+	
+	/**
+	 * @Route("/my_following", name="looks_my_following")
+	 * @Template()
+	 */
+	public function myFollowingAction()
+	{
+	  
 	}
 	
 }

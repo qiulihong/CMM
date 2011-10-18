@@ -1,9 +1,8 @@
 {% extends '::layout.html.twig' %}
 
 {% block body %}
-<h1>Looks list</h1>
 
-<table class="records_list">
+<!--table class="records_list">
     <thead>
         <tr>
             <th>Id</th>
@@ -31,7 +30,87 @@
         </tr>
     {% endfor %}
     </tbody>
-</table>
+</table-->
+		<div id="all_looks" class="">
+			<ul class="looks">
+				{% for looks in entities %}
+					<li style="margin-bottom: 90px;">
+						<div class="container">
+							<div class="looks_img column" style="">
+								<a href="" onMouseOver="$(this).siblings('.on_layer').show();"><img src="{{ looks.url }}" width="290" height="484" /></a>
+								<div class="outfit_image_click">
+									<a href=""><span class="zoom">&nbsp;</span>点击看大图</a>
+								</div>
+								<div id="on_layer_{{ looks.id }}" class="on_layer" style="color:#0f0;" onmouseout="$(this).hide();"">
+									{% set tagIndex = 0 %}
+									{% for tag in looks.tags%}
+									{% set tagIndex = tagIndex+1 %}
+										<span class="on_marker_wrapper" id="tag_mark" rel="{{ tagIndex }}" style="position:absolute;top:{{ tag.position|fetchY }}px;left:{{ tag.position|fetchX }}px;display:block;" onmouseover="$(this).css('background-color', '#f00')" onmouseout="$(this).css('background-color', '#fff')">
+											<span class="on_marker">{{ tagIndex }}</span>
+										</span>
+									{% endfor %}
+								</div>
+							</div>
+							<div class="looks_wrapper column last span-11-5" style="">
+								<div class="looks_wrapper_head" class="span-11-5" style="">
+									<div class="looks_wrapper_subhead" >
+										<div class="column span-2 vote_block" >
+											<span class="vote_count" id="looks_vote_count_{{ looks.getId() }}">{{ looks.votes|count }}</span>
+											{% if is_granted('IS_AUTHENTICATED_REMEMBERED') %}
+												<a href="javascript:void(0);" onClick="javascript:doVote({{ app.user.id }}, {{ looks.getId() }});"><span class="vote_action" data-looks_id="{{ looks.getId() }}" rel="looks_{{ looks.getId() }}">{{ 'choumei.looks.vote'|trans({}, 'ChoumeiLooksBundle') }}</span></a>
+											{% else %}
+												<a href="javascript:void(0);" onClick="javascript:alert('need login')"><span class="vote_action" data-looks_id="{{ looks.getId() }}" rel="looks_{{ looks.getId() }}">{{ 'choumei.looks.vote'|trans({}, 'ChoumeiLooksBundle') }}</span></a>
+											{% endif %}
+										</div>
+										<div class="column span-8 last" id="">
+											<div class="column" style="height:70px;padding:0;">
+												<div class="avatar_main"><img src="{{ looks.user.avatar }}" /></div>
+												<!-- div class="follow_user"><a href="{{ path('ChoumeiSecurityBundle_follow', {'user_id': looks.user.id}) }}">+{{ 'choumei.user.follow'|trans({}, 'ChoumeiLooksBundle') }}</a></div //-->
+												{% if is_granted('IS_AUTHENTICATED_REMEMBER') %}
+													{% if not looks.user.isFollowedBy(app.user.getId()) %}
+														<div class="follow_user"><a href="javascript:void(0);" onClick="follow({{ looks.user.id }})">+{{ 'choumei.user.follow'|trans({}, 'ChoumeiLooksBundle') }}</a></div>
+													{% else %}
+														<div class="follow_user">{{ 'choumei.user.followed'|trans({}, 'ChoumeiLooksBundle') }}</div>
+													{% endif %}
+												{% else %}
+													<div class="follow_user"><a href="javascript:void(0);" onClick="follow({{ looks.user.id }})">+{{ 'choumei.user.follow'|trans({}, 'ChoumeiLooksBundle') }}</a></div>
+												{% endif %}
+											</div>
+											<div class="column">
+												<h3>{{ looks.title }}</h3>
+												<div style="font-size:0.7em;padding:3px 0;font-weight:normal;">
+													<span><a href="{{ path('fos_user_profile_show', {'uid': looks.user.id }) }}">{{ looks.user }}</a></span>
+													<span>{{ looks.getCreatedAt().date|date('Y/m/d') }}</span>
+												</div>
+											</div>
+										</div>
+										<div class="clear" style="height:0;line-height:0;">&nbsp;</div>
+									</div>
+								</div>
+								<div class="looks_actions contents" style="height:35px;position:relative;">
+									<div class="column span-8">Head Actions</div>
+									<div class="column last span-2 " style="text-align:right;"><a href="{{ path('looks_show', {'id': looks.id }) }}#comments"><span>{{ looks.comments|count }}</span><span class="comment_icon"></span></a></div>
+								</div>
+								<div class="looks_tags">
+									<ul>
+										{% set tagIndex = 0 %}
+										{% for tag in looks.tags%}
+										{% set tagIndex = tagIndex+1 %}
+										<li class="tag_detail" rel="{{ tagIndex }}" looks="{{ looks.id }}">
+											<span class="column number">{{ tagIndex }}</span>
+											<span class="column">{{ tag.clothType }} - {{ tag.brand }}</span> 
+										</li>
+										{% endfor %}
+										</ul>
+								</div>
+							</div>
+						</div>
+					</li>
+					<div class=""></div>
+				{% endfor %}
+			</ul>
+		</div>
+	</div>
 
 <ul>
     <li>

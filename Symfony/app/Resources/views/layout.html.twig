@@ -59,8 +59,8 @@
 		    					<li class="first"><a href="{{ url('fos_user_registration_register')}}">注册</a></li>
 		    					<li><a href="{{ url('fos_user_security_login') }}">登录</a></li>
 	    					{% endif %}
-	    					<li class="grey"><a href="/about-us">关于</a></li>
-	    					<li class="grey"><a href="/business">你是商家？</a></li>
+	    					<li class="grey"><a href="{{ url('about_us') }}">关于</a></li>
+	    					<li class="grey"><a href="{{ url('business') }}">你是商家？</a></li>
 	    				</ul>
 	    			</div>
 	    			<div class="clear">&nbsp;</div>
@@ -68,9 +68,9 @@
 	    				<ul style="position:relative;">
 	    					<li id="menu_looks" onmouseover="$('#menu_looks_submenu').show()" onmouseout="$('#menu_looks_submenu').hide()"><a href="{{ url('looks') }}">打扮</a>
 			    				<ul id="menu_looks_submenu" style="margin-top:-5px;">
-			    					<li>最流行</li>
-			    					<li>最新上传</li>
-			    					<li>我关注得</li>
+			    					<li><a href="{{ url('looks_most_popular') }}">最流行</a></li>
+			    					<li><a href="{{ url('looks_most_latest') }}">最新上传</a></li>
+			    					<li><a href="{{ url('looks_my_following') }}">我关注得</a></li>
 			    				</ul>
 			    			</li>
 	    					<li id="popular_chics"><a href="{{ url('looks_chics') }}">时尚达人</a></li>

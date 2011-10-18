@@ -40,4 +40,15 @@ class DefaultController extends Controller
       //$imageThumb = $this->get('choumei_looks.imagethumb');
       return $this->render('ChoumeiWelcomeBundle:Default:index.html.twig', array('latestLooks'=> $latestLooks));
     }
+    
+    public function aboutUsAction()
+    {
+      echo 'About Choumei.me';
+      exit;
+    }
+    
+    public function businessAction()
+    {
+      exit('business');
+    }
 }

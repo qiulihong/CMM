@@ -12,7 +12,7 @@ class CommentType extends AbstractType
         $builder
             //->add('created_at')
             ->add('comment_id', 'hidden')
-            ->add('content', 'textarea')
+            ->add('content', 'textarea', array('label'=>'说两句'))
             //->add('user', 'hidden')
             //->add('looks')
         ;
