@@ -1,6 +1,6 @@
 <?php
 
-require_once dirname(__FILE__) . '/../ImageThumb/PhpthumbFactory.php';
+require_once dirname(__FILE__) . '/../ImageThumb/PhpThumbFactory.php';
 
 /**
  * Handle file uploads via XMLHttpRequest
