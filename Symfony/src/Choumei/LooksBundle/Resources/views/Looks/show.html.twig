@@ -108,7 +108,7 @@
 	<form action="{{ path('looks_comment_create') }}" method="post" id="looks_comment_form">
 		{{ form_widget(comment_form) }}
 		<input type="hidden" name="looks_id" id="looks_id" value="{{ entity.id }}" />
-		<input type="submit" value="提交" />
+		<input type="button" id="submit_looks_comment" value="提交" />
 	</form>
 </div>
 	<script src="{{ asset('/bundles/choumeilooks/js/vote.js') }}" type="text/javascript"></script>

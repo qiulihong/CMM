@@ -144,7 +144,7 @@ class qqFileUploader {
         }
         
         $size = $this->file->getSize();
-        $imgInfo = $this->file->getImageInfo();
+        //$imgInfo = $this->file->getImageInfo();
         
         if ($size == 0) {
             return array('error' => 'File is empty');
@@ -171,13 +171,13 @@ class qqFileUploader {
             }
         }
         if ($this->file->save($uploadDirectory . $filename . '.' . $ext)){
-          
+          //
+          $imgInfo = $this->file->getImageInfo($uploadDirectory . $filename . '.' . $ext);
           // generate avatar
           if( isset($avatarSize['width']) && isset($avatarSize['height']) && $avatarSize['width'] >0 && $avatarSize['height'] > 0){
             $this->file->resize($uploadDirectory . $filename . '.' . $ext, $avatarSize['width'], $avatarSize['height'], $uploadDirectory . $filename . '_ava.' . $ext);
+            $imgInfo = $this->file->getImageInfo($uploadDirectory . $filename . '_ava.' . $ext);
           }
-          //
-          $imgInfo = $this->file->getImageInfo($uploadDirectory . $filename . '.' . $ext);
             return array('success'=>true, 'avatar_file_name'=>$filename.'_ava.' . $ext, 'imgInfo' => $imgInfo);
         } else {
             return array('error'=> 'Could not save uploaded file.' .

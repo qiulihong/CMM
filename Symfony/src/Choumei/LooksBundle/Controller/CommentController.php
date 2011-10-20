@@ -49,7 +49,11 @@ class CommentController extends Controller
         $em->persist($entity);
         $em->flush();
         
-        exit();
+        $retArray  = array(
+          'username'	=> $user->getUsername(),
+          'comment'		=> $entity->getContent(),
+        );
+        exit(json_encode($retArray));
       }
     }
     
