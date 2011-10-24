@@ -13090,6 +13090,22 @@ function follow(user_id) {
 		}
 	});
 }
+$(function(){
+	$('#submit_looks_comment').click(function(){
+		$.ajax({
+			url: $('#looks_comment_form').attr('action'),
+			data: $('#looks_comment_form').serialize(),
+			dataType: 'json',
+			type: 'post',
+			success: function(data){
+				$('#choumei_looksbundle_commenttype_content').val('');
+				//alert(data.username);
+				// TODO: append new comment
+				alert('评论添加成功');
+			}
+		});
+	});
+});
 var cur=0;
 var tweets_array=Array();
 var obj;

@@ -87,6 +87,39 @@ fos_user:
   profile:
     form:
       type: choumei_user_profile
+  from_email:
+    address: no-reply@choumei.me
+    sender_name: 臭美网
+  change_password:
+    form:
+        type:               fos_user_change_password
+        handler:            fos_user.change_password.form.handler.default
+        name:               fos_user_change_password_form
+        validation_groups:  [ChangePassword]
+  registration:
+    confirmation:
+        from_email: # Use this node only if you don't want the global email address for the confirmation email
+            address:        no-reply@choumei.me
+            sender_name:    臭美网
+        enabled:    true # change to true for required email confirmation
+        template:   FOSUserBundle:Registration:email.txt.twig
+    form:
+        type:               fos_user_registration
+        handler:            fos_user.registration.form.handler.default
+        name:               fos_user_registration_form
+        validation_groups:  [Registration]
+  resetting:
+    token_ttl: 86400
+    email:
+        from_email: # Use this node only if you don't want the global email address for the resetting email
+            address: no-reply@choumei.me
+            sender_name: 臭美网
+        template:   FOSUserBundle:Resetting:email.txt.twig
+    form:
+        type:               fos_user_resetting
+        handler:            fos_user.resetting.form.handler.default
+        name:               fos_user_resetting_form
+        validation_groups:  [ResetPassword]
   
 stof_doctrine_extensions:
     default_locale: zh_CN

@@ -1278,8 +1278,9 @@ $(function(){
 	    	var img	= new Image();
 	    	img.src= responseJSON.img_url + fileName;
 	    	//alert(img.src);
-	    	var imgHeight	= img.height;
-	    	var imgWidth	= img.width;
+	    	//alert(responseJSON.imgInfo['0']);
+	    	var imgHeight	= responseJSON.imgInfo[1];
+	    	var imgWidth	= responseJSON.imgInfo[0];
 	    	if(imgHeight < 484 || imgWidth < 290 ){
 	    		alert('为了保证图片质量，请上传尺寸大于 290*484 照片 ^_^')
 	    	}else{
@@ -1385,8 +1386,10 @@ function initCropResize(image_source, imgWidth, imgHeight)
   var cropzoom = $('#image_source').cropzoom({
     width:348,
     height:581,
+	//width: 400,
+	//height: 300,
     bgColor: '#CCC',
-    overlayColor: '#CCC',
+    //overlayColor: '#CCC',
     enableRotation:true,
     enableZoom:true,
     zoomSteps:10,
@@ -1397,17 +1400,19 @@ function initCropResize(image_source, imgWidth, imgHeight)
       h:484,
       borderColor:'blue',
       borderColorHover:'yellow',
-      aspectRatio: true
+      //aspectRatio: true
     },
     image:{
         source: image_source,
         width: imgWidth,
         height:imgHeight,
+        //width: 1024,
+        //height: 768,
         minZoom:50,
         maxZoom:200,
-        startZoom:100,
-        useStartZoomAsMinZoom:true,
-        snapToContainer:true,
+        //startZoom:100,
+        //useStartZoomAsMinZoom:true,
+        //snapToContainer:true,
     }
   });
   

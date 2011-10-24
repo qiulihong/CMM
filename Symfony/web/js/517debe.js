@@ -1277,8 +1277,10 @@ $(function(){
 	    	//$('#file-uploader').append($('<div><img src="'+responseJSON.img_url+fileName+'" /></div>'));
 	    	var img	= new Image();
 	    	img.src= responseJSON.result.img_path_url + '/' + fileName;
-	    	var imgWidth = img.width;
-	    	var imgHeight = img.height;
+	    	//var imgWidth = img.width;
+	    	//var imgHeight = img.height;
+	    	var imgHeight	= responseJSON.result.imgInfo[1];
+	    	var imgWidth	= responseJSON.result.imgInfo[0];
 	    	//$('#avatar_img').attr('src', responseJSON.result.img_path_url+'/'+responseJSON.result.avatar_file_name);
 	    	var cropAvatarZone	= initCropResizeAvatar(responseJSON.result.img_path_url+'/' + fileName, imgWidth, imgHeight);
     		$('#avatar-uploader').hide();

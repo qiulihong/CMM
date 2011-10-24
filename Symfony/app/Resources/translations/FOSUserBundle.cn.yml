@@ -13,7 +13,7 @@ security.login.remember_me: 记住我
 security.login.submit: 登录
 
 # Profile
-profile.show.username: 用户名 
+profile.show.username: 用户名
 profile.show.email: Email 
 profile.show.dob : 生日
 profile.show.nickname : 昵称
@@ -25,11 +25,11 @@ change_password.submit: Change password
 change_password.flash.success: The password has been changed
 
 # Registration
-registration.check_email: An email has been sent to %email%. It contains an activation link you must click to activate your account.
+registration.check_email: 一封邮件已经发送到 %email%. 邮件包含了激活帐号的链接，请务必点击激活您的帐号。
 registration.confirmed: Congrats %username%, your account is now confirmed.
 registration.back: Back to the originating page.
 registration.submit: 注册
-registration.flash.user_created: The user has been created successfully
+registration.flash.user_created: 用户创建成功！
 
 registration.email: |
     Welcome %username%!
