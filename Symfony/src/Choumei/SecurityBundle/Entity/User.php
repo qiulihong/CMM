@@ -39,7 +39,7 @@ class User extends BaseUser
     private $votes;
 
     /**
-     * @ORM\Column(name="location", type="string")
+     * @ORM\Column(name="location", type="string", nullable=true)
      */
     protected $location;
     
@@ -55,13 +55,13 @@ class User extends BaseUser
     protected $gender;
     
     /**
-     * @ORM\Column(name="nickname", type="string", length=128)
+     * @ORM\Column(name="nickname", type="string", length=128, nullable=true)
      * @Assert\MaxLength(limit=128, message="昵称最长128字符", groups={"Profile","Registration"})
      */
     private $nickname;
     
     /**
-     * @ORM\Column(name="avatar", type="string")
+     * @ORM\Column(name="avatar", type="string", nullable="true")
      */
     private $avatar;
     

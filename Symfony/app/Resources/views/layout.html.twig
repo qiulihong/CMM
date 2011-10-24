@@ -76,18 +76,25 @@
 	    					<li id="popular_chics"><a href="{{ url('looks_chics') }}">时尚达人</a></li>
 	    					<li id="brand_browse" onmouseover="javascript:$('#brands').show()" onmouseout="javascript:$('#brands').hide()"><a href="{{ url('looks_brands') }}">品牌, 分类</a>
 	    						<div id="brands" style="margin-top:-5px;">
-	    							<ul class="column span-6">
-	    								<li><a href="{{ url('looks_view_brand', {'brandName':'ttt'}) }}">Brand 1</a></li>
-	    								<li>Brand 1</li>
-	    								<li>Brand 1</li>
-	    								<li>Brand 1</li>
-	    							</ul>
-	    							<ul class="column span-6 last">
-	    								<li>Brand 2</li>
-	    								<li>Brand 2</li>
-	    								<li>Brand 2</li>
-	    								<li>Brand 2</li>
-	    							</ul>
+	    							<div class="column span-6">
+	    								<h3 >{{ 'browse.brand'|trans({}, 'ChoumeiLooksBundle') }}</h3>
+		    							<ul style="margin:0;padding:0">
+		    								<li><a href="{{ url('looks_view_brand', {'brandName':'ttt'}) }}">Brand 1</a></li>
+		    								<li>Brand 1</li>
+		    								<li>Brand 1</li>
+		    								<li>Brand 1</li>
+		    							</ul>
+	    							</div>
+	    							<div class="column span-6 last">
+	    								<h3 >{{ 'browse.clothtype'|trans({}, 'ChoumeiLooksBundle') }}</h3>
+		    							<ul>
+		    								<li>Brand 2</li>
+		    								<li>Brand 2</li>
+		    								<li>Brand 2</li>
+		    								<li>Brand 2</li>
+		    							</ul>
+		    							{% render "ChoumeiLooksBundle:Brand:latestBrands" with {'max': 3} %}
+	    							</div>
 	    						</div>
 	    					</li>
 							<li style="" id="upload_button">

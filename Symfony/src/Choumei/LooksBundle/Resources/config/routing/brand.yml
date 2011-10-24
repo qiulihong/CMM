@@ -1,0 +1,30 @@
+brand:
+    pattern:  /
+    defaults: { _controller: "ChoumeiLooksBundle:Brand:index" }
+
+brand_show:
+    pattern:  /{id}/show
+    defaults: { _controller: "ChoumeiLooksBundle:Brand:show" }
+
+brand_new:
+    pattern:  /new
+    defaults: { _controller: "ChoumeiLooksBundle:Brand:new" }
+
+brand_create:
+    pattern:  /create
+    defaults: { _controller: "ChoumeiLooksBundle:Brand:create" }
+    requirements: { _method: post }
+
+brand_edit:
+    pattern:  /{id}/edit
+    defaults: { _controller: "ChoumeiLooksBundle:Brand:edit" }
+
+brand_update:
+    pattern:  /{id}/update
+    defaults: { _controller: "ChoumeiLooksBundle:Brand:update" }
+    requirements: { _method: post }
+
+brand_delete:
+    pattern:  /{id}/delete
+    defaults: { _controller: "ChoumeiLooksBundle:Brand:delete" }
+    requirements: { _method: post }

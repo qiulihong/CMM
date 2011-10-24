@@ -141,6 +141,13 @@ li#menu_looks ul {
 #menu_looks_submenu{
 	position:absolute;
 }
+#menu_looks_submenu li a{
+	color:#444;
+}
+#menu_looks_submenu li a:hover{
+	color:#000;
+}
+
 #brands {
 	display:none;
 	position:absolute; 
@@ -159,6 +166,9 @@ li#menu_looks ul {
 	height:25px;
 	line-height:25px;
 	padding:5px 0;
+}
+#brands h3{
+	margin:20px 0 0 20px;padding:0;font-size:0.8em;
 }
 
 /* for cropZoom*/

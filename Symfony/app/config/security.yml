@@ -48,8 +48,8 @@ security:
         - { path: ^/resetting$, role: IS_AUTHENTICATED_ANONYMOUSLY }
         - { path: ^/admin$, role: ROLE_ADMIN }
         - { path: ^/looks/new$, role: ROLE_USER }
-        - { path: ^/looks/\d/edit$, role: ROLE_USER }
-        - { path: ^/looks/\d/delete$, role: ROLE_USER }
+        - { path: ^/looks/\d+/edit$, role: ROLE_USER }
+        - { path: ^/looks/\d+/delete$, role: ROLE_USER }
         - { path: ^/looks/upload$, role: ROLE_USER }
         - { path: ^/looks/crop$, role: ROLE_USER }
         - { path: ^/user/edit$, role: ROLE_USER }

@@ -3,6 +3,11 @@
 namespace Choumei\LooksBundle\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
+use Symfony\Component\Security\Acl\Domain\ObjectIdentity;
+use Symfony\Component\Security\Acl\Domain\UserSecurityIdentity;
+use Symfony\Component\Security\Acl\Permission\MaskBuilder;
+use Symfony\Component\Security\Core\Exception\AccessDeniedException;
+
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
@@ -12,6 +17,7 @@ use Choumei\LooksBundle\Entity\Accessory;
 use Choumei\LooksBundle\Entity\Comment;
 use Choumei\LooksBundle\Form\LooksType;
 use Choumei\LooksBundle\Form\CommentType;
+use JMS\SecurityExtraBundle\Annotation\Secure;
 
 require_once(dirname(__FILE__).'/../Resources/php.php');
 /**
@@ -119,9 +125,20 @@ class LooksController extends Controller
           //end set relations
           $user  = $this->get('security.context')->getToken()->getUser();
           $entity->setUser( $user );
+          
             $em = $this->getDoctrine()->getEntityManager();
             $em->persist($entity);
             $em->flush();
+            
+            // create ACL
+            $aclProvider  = $this->get('security.acl.provider');
+            $objectIdentity = ObjectIdentity::fromDomainObject($entity);
+            $acl = $aclProvider->createAcl($objectIdentity);
+            // retrieving the currently logged-in user
+            $securityObject  = UserSecurityIdentity::fromAccount($user);
+            // grant owner permissions
+            $acl->insertObjectAce($securityObject, MaskBuilder::MASK_OWNER);
+            $aclProvider->updateAcl($acl);
 
             return $this->redirect($this->generateUrl('looks_show', array('id' => $entity->getId())));
             
@@ -144,6 +161,12 @@ class LooksController extends Controller
         $em = $this->getDoctrine()->getEntityManager();
 
         $entity = $em->getRepository('ChoumeiLooksBundle:Looks')->find($id);
+        
+        // check permission, only owner and admin can edit
+	    $securityContext  = $this->get('security.context');
+	    if( false === $securityContext->isGranted('EDIT', $entity) ){
+	      throw new AccessDeniedException(); 
+	    }
 
         if (!$entity) {
             throw $this->createNotFoundException('Unable to find Looks entity.');

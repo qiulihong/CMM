@@ -1,0 +1,4 @@
+ChoumeiLooksBundle_brand:
+    resource: "@ChoumeiLooksBundle/Resources/config/routing/brand.yml"
+    prefix:   /brand
+
