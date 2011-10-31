@@ -1,6 +1,7 @@
 {% extends '::layout.html.twig' %}
 {% block body %}
-	<div id="looks_detail" class="container">
+<div class="container">
+	<div id="looks_detail" class="column span-19">
 		<div class="looks_img column" style="">
 			<a href="" onMouseOver="$(this).siblings('.on_layer').show();"><img src="{{ looks.url }}" width="290" height="484" /></a>
 			<div class="outfit_image_click">
@@ -69,47 +70,53 @@
 					</ul>
 			</div>
 		</div>
+			
+		<!-- ul class="record_actions">
+		    <li>
+		        <a href="{{ path('looks') }}">
+		            Back to the list
+		        </a>
+		    </li>
+		    <li>
+		        <a href="{{ path('looks_edit', { 'id': entity.id }) }}">
+		            Edit
+		        </a>
+		    </li>
+		    <li>
+		        <form action="{{ path('looks_delete', { 'id': entity.id }) }}" method="post">
+		            {{ form_widget(delete_form) }}
+		            <button type="submit">Delete</button>
+		        </form>
+		    </li>
+		</ul -->
+		
+		<!-- related accessories images //-->
+		<div id="accessories" class="container">
+		</div>
+		
+		<!-- other looks on choumei.me //-->
+		<div id="other_looks" class="container">
+		</div>
 	</div>
-	
-<!-- ul class="record_actions">
-    <li>
-        <a href="{{ path('looks') }}">
-            Back to the list
-        </a>
-    </li>
-    <li>
-        <a href="{{ path('looks_edit', { 'id': entity.id }) }}">
-            Edit
-        </a>
-    </li>
-    <li>
-        <form action="{{ path('looks_delete', { 'id': entity.id }) }}" method="post">
-            {{ form_widget(delete_form) }}
-            <button type="submit">Delete</button>
-        </form>
-    </li>
-</ul -->
 
-<!-- related accessories images //-->
-<div id="accessories" class="container">
-</div>
-
-<!-- other looks on choumei.me //-->
-<div id="other_looks" class="container">
-</div>
-
-<!-- comment area //-->
-<div id="comments" class="container">
-	<ul>
-		{% for comment in looks.comments %}
-			<li>{{ comment.user }} - {{ comment.content}}</li>
-		{% endfor %}
-	</ul>
-	<form action="{{ path('looks_comment_create') }}" method="post" id="looks_comment_form">
-		{{ form_widget(comment_form) }}
-		<input type="hidden" name="looks_id" id="looks_id" value="{{ entity.id }}" />
-		<input type="button" id="submit_looks_comment" value="提交" />
-	</form>
-</div>
+	<!-- comment area //-->
+	<div id="comments" class="column " style="width:385px;">
+		<ul>
+			{% for comment in looks.comments %}
+				<li>{{ comment.user }} - {{ comment.content}}</li>
+			{% endfor %}
+		</ul>
+		{% if is_granted('IS_AUTHENTICATED_REMEMBERED') %}
+			<form action="{{ path('looks_comment_create') }}" method="post" id="looks_comment_form">
+				{{ form_widget(comment_form) }}
+				<input type="hidden" name="looks_id" id="looks_id" value="{{ entity.id }}" />
+				<input type="button" id="submit_looks_comment" value="提交" />
+			</form>
+		{% else %}
+		 	登录, 发表评论
+		{% endif %}
+	</div>
 	<script src="{{ asset('/bundles/choumeilooks/js/vote.js') }}" type="text/javascript"></script>
+</div>
+
 {% endblock %}

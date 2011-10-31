@@ -5,6 +5,7 @@ namespace Choumei\LooksBundle\Controller;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\Security\Acl\Domain\ObjectIdentity;
 use Symfony\Component\Security\Acl\Domain\UserSecurityIdentity;
+use Symfony\Component\Security\Acl\Domain\RoleSecurityIdentity;
 use Symfony\Component\Security\Acl\Permission\MaskBuilder;
 use Symfony\Component\Security\Core\Exception\AccessDeniedException;
 
@@ -64,8 +65,10 @@ class LooksController extends Controller
 
         $comment  = new Comment();
         $comment->setLooks($entity);
-        $comment->setUser($this->get('security.context')->getToken()->getUser());
-        $comment->setCommentId(0);
+        if($this->get('security.context')->isGranted('IS_AUTHENTICATED_REMEMBERED')){
+	        $comment->setUser($this->get('security.context')->getToken()->getUser());
+	        $comment->setCommentId(0);
+        }
         
         $deleteForm = $this->createDeleteForm($id);
         $commentForm  = $this->createForm(new CommentType, $comment);
@@ -136,8 +139,10 @@ class LooksController extends Controller
             $acl = $aclProvider->createAcl($objectIdentity);
             // retrieving the currently logged-in user
             $securityObject  = UserSecurityIdentity::fromAccount($user);
+            $roleSecurityObject  = new RoleSecurityIdentity('ROLE_ADMIN');
             // grant owner permissions
             $acl->insertObjectAce($securityObject, MaskBuilder::MASK_OWNER);
+            $acl->insertObjectAce($roleSecurityObject, MaskBuilder::MASK_OWNER);
             $aclProvider->updateAcl($acl);
 
             return $this->redirect($this->generateUrl('looks_show', array('id' => $entity->getId())));
