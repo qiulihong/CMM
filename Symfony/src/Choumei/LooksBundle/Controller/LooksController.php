@@ -91,6 +91,16 @@ class LooksController extends Controller
     {
         $entity = new Looks();
         $form   = $this->createForm(new LooksType(), $entity);
+      // build top category choices
+      /*
+        $em = $this->getDoctrine()->getEntityManager();
+        $typeRepo  = $em->getRepository('ChoumeiLooksBundle:ClothType');
+        $topCategories  = $typeRepo->getTypes();
+        $choices  =  array();
+        foreach($topCategories as $category){
+          $choices[$category->getId()]  = $category->getName();
+        }
+        */
 
         return array(
             'entity' => $entity,
@@ -111,6 +121,11 @@ class LooksController extends Controller
         $request = $this->getRequest();
         $form    = $this->createForm(new LooksType(), $entity);
         $form->bindRequest($request);
+
+        /*
+        $em = $this->getDoctrine()->getEntityManager();
+        $typesRepo  = $em->getRepository('ChoumeiLooksBundle:ClothType');
+        */
 
         if ($form->isValid()) {
           // set relation for accessories and tags

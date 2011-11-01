@@ -12,4 +12,13 @@ use Doctrine\ORM\EntityRepository;
  */
 class ClothTypeRepository extends EntityRepository
 {
+  public function getTypes($parent=NULL){
+    $query  = $this->createQueryBuilder('t')
+                ->where('t.id = ?', $parent)
+                ->orderBy('t.id', 'ASC')
+                ->getQuery();
+    
+    $types  = $query->getResult();            
+    return $types;
+  }
 }

@@ -204,4 +204,7 @@ class Tag
         return $this->cloth_type;
     }
     
+    public function getClothTypeCategory(){ }
+    public function setClothTypeCategory(){}
+    
 }
