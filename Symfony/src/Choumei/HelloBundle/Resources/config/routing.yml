@@ -1,3 +1,0 @@
-ChoumeiHelloBundle_homepage:
-    pattern:  /hello/{name}
-    defaults: { _controller: ChoumeiHelloBundle:Default:index }
