@@ -3,8 +3,10 @@ function initCropResize(image_source, imgWidth, imgHeight)
   var cropzoom = $('#image_source').cropzoom({
     width:348,
     height:581,
+	//width: 400,
+	//height: 300,
     bgColor: '#CCC',
-    overlayColor: '#CCC',
+    //overlayColor: '#CCC',
     enableRotation:true,
     enableZoom:true,
     zoomSteps:10,
@@ -15,17 +17,19 @@ function initCropResize(image_source, imgWidth, imgHeight)
       h:484,
       borderColor:'blue',
       borderColorHover:'yellow',
-      aspectRatio: true
+      //aspectRatio: true
     },
     image:{
         source: image_source,
         width: imgWidth,
         height:imgHeight,
+        //width: 1024,
+        //height: 768,
         minZoom:50,
         maxZoom:200,
-        startZoom:100,
-        useStartZoomAsMinZoom:true,
-        snapToContainer:true,
+        //startZoom:100,
+        //useStartZoomAsMinZoom:true,
+        //snapToContainer:true,
     }
   });
   
@@ -42,6 +46,8 @@ function doCropResize(cropZone)
 		$('#create_looks_form').show();
 		$('#image_source').hide();
 		$('#do_crop_button').hide();
+		// update step info
+		$('h2').text('第二步：标注品牌');
 	});
 	
 }

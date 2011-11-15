@@ -119,6 +119,10 @@ class LooksController extends Controller
     {
         $entity  = new Looks();
         $request = $this->getRequest();
+        if( !$request->get('user') ) {
+          $user  = $this->get('security.context')->getToken()->getUser();
+          $entity->setUser($user);
+        }
         $form    = $this->createForm(new LooksType(), $entity);
         $form->bindRequest($request);
 

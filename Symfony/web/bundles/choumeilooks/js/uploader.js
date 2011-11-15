@@ -28,8 +28,9 @@ $(function(){
 	    	var img	= new Image();
 	    	img.src= responseJSON.img_url + fileName;
 	    	//alert(img.src);
-	    	var imgHeight	= img.height;
-	    	var imgWidth	= img.width;
+	    	//alert(responseJSON.imgInfo['0']);
+	    	var imgHeight	= responseJSON.imgInfo[1];
+	    	var imgWidth	= responseJSON.imgInfo[0];
 	    	if(imgHeight < 484 || imgWidth < 290 ){
 	    		alert('为了保证图片质量，请上传尺寸大于 290*484 照片 ^_^')
 	    	}else{

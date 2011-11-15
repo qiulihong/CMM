@@ -32,7 +32,7 @@ $(function(){
 	  tagDiv.attr('class','container tag_div');
 	  tagDiv.attr('id', tagDivId);
 	  tagDiv.css({
-		'border': '1px solid #f00',
+		/*'border': '1px solid #f00',*/
 		'position':'absolute',
 		'top':y,
 		'left':x,
@@ -66,7 +66,8 @@ $(function(){
 	  // set up css
 	  $('span.tag_tag').css({
 		  'display':'block',
-		  'border':'1px solid #0f0'
+		  'background-color':'#FFFFFF',
+		  /*'border':'1px solid #0f0'*/
 	  });
 	  $('span.tag_tag').attr('class','tag_tag column');
 	  //$('span.tag_form').css({
@@ -173,3 +174,19 @@ function follow(user_id) {
 		}
 	});
 }
+$(function(){
+	$('#submit_looks_comment').click(function(){
+		$.ajax({
+			url: $('#looks_comment_form').attr('action'),
+			data: $('#looks_comment_form').serialize(),
+			dataType: 'json',
+			type: 'post',
+			success: function(data){
+				$('#choumei_looksbundle_commenttype_content').val('');
+				//alert(data.username);
+				// TODO: append new comment
+				alert('评论添加成功');
+			}
+		});
+	});
+});
