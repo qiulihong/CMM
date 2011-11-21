@@ -89,7 +89,7 @@ fos_user:
       type: choumei_user_profile
   from_email:
     address: no-reply@choumei.me
-    sender_name: 臭美网
+    sender_name: 好美网
   change_password:
     form:
         type:               fos_user_change_password
@@ -100,7 +100,7 @@ fos_user:
     confirmation:
         from_email: # Use this node only if you don't want the global email address for the confirmation email
             address:        no-reply@choumei.me
-            sender_name:    臭美网
+            sender_name:    好美网
         enabled:    true # change to true for required email confirmation
         template:   FOSUserBundle:Registration:email.txt.twig
     form:
@@ -113,7 +113,7 @@ fos_user:
     email:
         from_email: # Use this node only if you don't want the global email address for the resetting email
             address: no-reply@choumei.me
-            sender_name: 臭美网
+            sender_name: 好美网
         template:   FOSUserBundle:Resetting:email.txt.twig
     form:
         type:               fos_user_resetting
